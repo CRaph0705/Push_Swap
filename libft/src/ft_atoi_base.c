@@ -6,11 +6,12 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:41:56 by rcochran          #+#    #+#             */
-/*   Updated: 2025/01/24 17:14:00 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:25:25 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	is_in_base(char c, char *base);
 int	ft_atoi_base(char *str, char *base);
 
@@ -45,16 +46,7 @@ int	ft_atoi_base(char *str, char *base)
 
 int	is_in_base(char c, char *base)
 {
-	size_t	i;
-	size_t	base_len;
-
-	base_len = (int)ft_strlen(base);
-	i = 0;
-	while ((i < base_len) && (c != base[i]))
-	{
-		i++;
-	}
-	if (base[i] == c)
+	if (ft_strchr(base, c)!= NULL)
 		return (1);
 	return (0);
 }

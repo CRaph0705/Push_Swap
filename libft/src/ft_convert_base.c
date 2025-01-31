@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:16:31 by rcochran          #+#    #+#             */
-/*   Updated: 2025/01/24 17:37:12 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:02:17 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*get_number_in_new_base(int nbr, char *base)
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int	num;
+	int		num;
 	char	*num_str;
 
 	if (is_base_valid(base_from) == 0 || is_base_valid(base_to) == 0)
@@ -66,6 +66,9 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	if (ac < 3)
 		return;
-	printf("nbr : %s\n base_from : %s\n base_to : %s\n new_num : %s", av[1], av[2], av[3], ft_convert_base(av[1], av[2], av[3]));
+	printf("nbr : %s\n
+	base_from : %s\n
+	base_to : %s\n
+	new_num : %s", av[1], av[2], av[3], ft_convert_base(av[1], av[2], av[3]));
 	return (0);
 } */

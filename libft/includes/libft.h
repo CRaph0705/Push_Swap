@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:28:08 by rcochran          #+#    #+#             */
-/*   Updated: 2025/01/24 17:20:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:26:52 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,28 +81,28 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 
 /* PRINTF PART */
-int		ft_printf(const char *str, ...);
-int		ft_case_by_format(va_list ptr, char c);
-int		ft_print_char(int c);
-int		ft_print_str(char *str);
-int		ft_print_ptr(unsigned long ptr);
-int		ft_print_nbr(int nb);
-int		ft_print_usnbr(unsigned long nb);
-int		ft_print_hex_fmt(unsigned long nb, char c);
+int					ft_printf(const char *str, ...);
+int					ft_case_by_format(va_list ptr, char c);
+int					ft_print_char(int c);
+int					ft_print_str(char *str);
+int					ft_print_ptr(unsigned long ptr);
+int					ft_print_nbr(int nb);
+int					ft_print_usnbr(unsigned long nb);
+int					ft_print_hex_fmt(unsigned long nb, char c);
 /* PRINTF UTILS */
-int		ft_putnbr_hexbase(unsigned long nb, char *hex_base);
-void	ft_putchar(int c);
-void	ft_putstr(char *str);
+int					ft_putnbr_hexbase(unsigned long nb, char *hex_base);
+void				ft_putchar(int c);
+void				ft_putstr(char *str);
 /* GNL PART */
-char		*extract_line(char *buf);
-char		*get_buffer(int fd, char *buf);
-char		*append_and_free(char *buf, char *buffer);
-char		*get_next_line(int fd);
-char		*update_buf(char *buf);
+char				*extract_line(char *buf);
+char				*get_buffer(int fd, char *buf);
+char				*append_and_free(char *buf, char *buffer);
+char				*get_next_line(int fd);
+char				*update_buf(char *buf);
 
 /* BASE FUNCTIONS */
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
-int		is_in_base(char c, char *base);
-int		is_base_valid(char *base);
+char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
+int					is_in_base(char c, char *base);
+int					is_base_valid(char *base);
 
 #endif
