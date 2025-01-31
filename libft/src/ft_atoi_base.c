@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:41:56 by rcochran          #+#    #+#             */
-/*   Updated: 2025/01/31 13:25:25 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:07:36 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	is_in_base(char c, char *base);
 int	ft_atoi_base(char *str, char *base);
 
+/* returns a num(int) in base 10 from num(str) in any valid base specified*/
 int	ft_atoi_base(char *str, char *base)
 {
 	int		i;
@@ -46,7 +47,7 @@ int	ft_atoi_base(char *str, char *base)
 
 int	is_in_base(char c, char *base)
 {
-	if (ft_strchr(base, c)!= NULL)
+	if (ft_strchr(base, c) != NULL)
 		return (1);
 	return (0);
 }

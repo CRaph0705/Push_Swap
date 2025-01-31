@@ -6,35 +6,60 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:16:31 by rcochran          #+#    #+#             */
-/*   Updated: 2025/01/31 13:02:17 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:12:57 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
-char	*get_number_in_new_base(int nbr, char *base);
+char	*convert_dec_in_new_base(int nbr, char *base);
 int		is_base_valid(char *base);
 int		ft_atoi_base(char *str, char *base);
 int		is_in_base(char c, char *base);
+size_t	get_num_len(int n, char *base);
 
-char	*get_number_in_new_base(int nbr, char *base)
+int	is_base_valid(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 1;
+	if ((int)ft_strlen(base) < 2)
+		return (0);
+	while (base[i])
+	{
+		if (base[i] == '-' || base[i] == '+')
+			return (0);
+		while (base[i + j] != base[i])
+		{
+			if (base[i] == base[i + j])
+				return (0);
+			j++;
+		}
+		j = 1;
+		i++;
+	}
+	if (base[i] == '\0')
+		return (1);
+	return (1);
+}
+
+char	*convert_dec_in_new_base(int nbr, char *base_to)
 {
 	unsigned int	n;
 	unsigned int	base_len;
-	int				base_is_valid;
-	int				i;
 	char			*str;
+	size_t			len;
 
-	str = NULL;
-	i = 0;
-	base_is_valid = is_base_valid(base);
-	base_len = ft_strlen(base);
-	if (base_is_valid != 1)
+	len = get_num_len(nbr, base_to);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str || is_base_valid(base_to) != 1)
 		return (NULL);
+	base_len = ft_strlen(base_to);
 	if (nbr < 0)
 	{
-		i++;
 		n = -nbr;
 		str[0] = '-';
 	}
@@ -42,33 +67,50 @@ char	*get_number_in_new_base(int nbr, char *base)
 		n = nbr;
 	while (n >= base_len)
 	{
-		str[i] = base[n % base_len] - '0';
-		n = n / base_len;
-		i++;
+		str[len--] = base_to[n % base_len];
+		n /= base_len;
 	}
-	str[i] = '\0';
+	str[len] = base_to[n % base_len];
 	return (str);
+}
+
+size_t	get_num_len(int n, char *base)
+{
+	size_t	len;
+	size_t	base_len;
+	size_t	num;
+
+	len = 0;
+	base_len = ft_strlen(base);
+	if (n < 0)
+	{
+		len++;
+		num = -n;
+	}
+	else
+		num = n;
+	while (num >= base_len)
+	{
+		num /= base_len;
+		len++;
+	}
+	return (len);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int		num;
+	int		dec_num;
 	char	*num_str;
+	size_t	num_str_len;
 
 	if (is_base_valid(base_from) == 0 || is_base_valid(base_to) == 0)
 		return (NULL);
-	num = ft_atoi_base(nbr, base_from);
-	num_str = get_number_in_new_base(num, base_to);
+	dec_num = ft_atoi_base(nbr, base_from);
+	num_str = NULL;
+	num_str_len = get_num_len(dec_num, base_to);
+	num_str = ft_calloc(num_str_len + 1, sizeof(char));
+	if (!num_str)
+		return (NULL);
+	num_str = convert_dec_in_new_base(dec_num, base_to);
 	return (num_str);
 }
-
-/* int	main (int ac, char **av)
-{
-	if (ac < 3)
-		return;
-	printf("nbr : %s\n
-	base_from : %s\n
-	base_to : %s\n
-	new_num : %s", av[1], av[2], av[3], ft_convert_base(av[1], av[2], av[3]));
-	return (0);
-} */

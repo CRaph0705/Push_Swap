@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 17:15:49 by rcochran          #+#    #+#              #
-#    Updated: 2025/01/31 12:50:52 by rcochran         ###   ########.fr        #
+#    Updated: 2025/01/31 14:39:48 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC_DIR = src/
 SRC_FILES = $(addsuffix .c, $(FILES))
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 FILES :=	ft_atoi \
+			ft_atoi_base \
 			ft_bzero \
 			ft_calloc \
 			ft_convert_base \
@@ -53,7 +54,6 @@ FILES :=	ft_atoi \
 			ft_tolower \
 			ft_toupper \
 			get_next_line \
-			get_next_line_utils\
 			ft_lstnew_bonus \
 			ft_lstadd_front_bonus \
 			ft_lstsize_bonus \
@@ -67,10 +67,7 @@ FILES :=	ft_atoi \
 			ft_print_num \
 			ft_print_ptr \
 			ft_printf_utils \
-			ft_printf \
-			is_base_valid \
-			ft_atoi_base 
-
+			ft_printf
 
 NAME := libft.a
 HEADER := includes/
@@ -99,3 +96,7 @@ $(OBJ_DIR) :
 
 #unit : all
 #make my own libft tester
+
+main : all
+	$(CC) main.c -c -I$(HEADER) -o obj/main.o
+	$(CC) obj/main.o -L. -l:libft.a -o obj/a.out
