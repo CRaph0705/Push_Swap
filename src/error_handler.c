@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/03 15:55:15 by rcochran         ###   ########.fr       */
+/*   Created: 2025/02/03 12:05:46 by rcochran          #+#    #+#             */
+/*   Updated: 2025/02/03 15:56:22 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+/* If no parameters are specified, the program must not display anything and give the
+prompt back. */
 
-int	main(int ac, char **av)
+/* • In case of error, it must display "Error" followed by a ’\n’ on the standard error.
+Errors include for example: some arguments aren’t integers, some arguments are
+bigger than an integer and/or there are duplicates. */
+
+int	check_arg_valid(int ac, char **av);
+
+int	check_arg_valid(int ac, char **av)
 {
-	int	*stack_a;
-
-	(void) ac, av;
-	check_arg_valid(ac, av);
-	stack_a = parse(av);
-	push_swap(stack_a);
 	return (0);
 }

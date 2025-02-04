@@ -1,33 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 12:42:06 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/03 13:04:44 by rcochran         ###   ########.fr       */
+/*   Created: 2025/02/03 13:04:26 by rcochran          #+#    #+#             */
+/*   Updated: 2025/02/03 13:04:28 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "push_swap.h"
-
-char	**push_swap(int *stack_a);
-
-/* You have to write a program named push_swap that takes as an argument the stack
-a formatted as a list of integers. The first argument should be at the top of the
-stack (be careful about the order). */
-
-/* The program must display the smallest list of instructions possible to sort the stack
-a, the smallest number being at the top. */
-
-/* • Instructions must be separated by a ’\n’ and nothing else. */
-char	**push_swap(int *stack_a)
-{
-	char	**instructions;
-
-	return (instructions);
-}
 
 /* 
 sa (swap a): Swap the first 2 elements at the top of stack a.
