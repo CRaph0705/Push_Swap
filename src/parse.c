@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/02/06 17:03:52 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:24:24 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,4 @@ char	**parse(char **str_array)
 }
 //TODO
 /* checker quand on a un char '\0' au milieu d'une string parmi les arg */
+

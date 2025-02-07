@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/06 18:06:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:50:25 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
+/* init.c */
+t_list			**init_stacks(void);
+t_list			*init_program(void);
+
+/* parse.c */
+char			**parse(char **str_array);
+static size_t	get_array_len(char **array);
+
 /* error handling */
-int		check_arg_valid(int ac, char **av);
+int				check_arg_valid(int ac, char **av);
 /* core */
-char	**push_swap(int *stack_a);
+char			**push_swap(int *stack_a);
 
 #endif
