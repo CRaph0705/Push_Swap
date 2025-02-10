@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:46 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/07 17:21:13 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:33:56 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,18 @@ int	check_arg_valid(int ac, char **av)
 {
 	if (ac < 2)
 		return (0);
+	(void)av;
 	return (1);
+}
+
+void	freetout(void)
+{
+	ft_putstr_fd("Freetout\n", 1);
+}
+
+void	error_handler(void)
+{
+	ft_putstr_fd("error_handler\n", 1);
 }
 
 void	display_error(void)
@@ -32,3 +43,10 @@ void	display_error(void)
 	ft_putstr_fd("Error\n", 2);
 }
 /* error handler isdigit sur chaque item parsé, à la moindre erreur break */
+
+int	check_stack_errors(t_list **stacks)
+{
+	(void)stacks;
+
+	return (0);
+}
