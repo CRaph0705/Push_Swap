@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/02/10 18:26:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:05:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ const char	**parse(char **str_array)
 	size_t	nb_elem;
 
 	i = 0;
+	nb_elem = 0;
 	formated_array = NULL;
 	formated_array = ft_calloc(1, 1);
 	if (!formated_array)

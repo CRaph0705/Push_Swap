@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/10 18:36:44 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/10 23:09:39 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list			**init_stacks(void);
 t_list			**init_program(int ac, char **av);
-t_list			*fill_stack(t_list *stack, char **array);
+t_list			*fill_stack(t_list *stack, int *array, size_t len);
 int				*cascade_atoi(const char **formated_array, int *dest);
 int				atoi_dest(const char	*num_ptr, int *dest);
 
@@ -43,10 +43,10 @@ t_list	**init_stacks(void)
 t_list	**init_program(int ac, char **av)
 {
 	t_list	**stacks;
-	t_list	*stack_a;
-	t_list	*stack_b;
 	int		*formated_array;
-
+	size_t	len;
+	// t_list	*stack_a;
+	// t_list	*stack_b;
 	if (!check_arg_valid(ac, av))
 		return (error_handler(), NULL);
 	formated_array = format_arg(av + 1);
@@ -55,25 +55,32 @@ t_list	**init_program(int ac, char **av)
 	//check formated array len
 	// if no error continue
 	stacks = init_stacks();
-	*stack_a = *stacks[0];
-	*stack_b = *stacks[1];
 	if (check_stack_errors(stacks))
 		return (freetout(), error_handler(), NULL);
-	stack_a = fill_stack(stack_a, formated_array);
+	// *stack_a = *stacks[0];
+	// *stack_b = *stacks[1];
+	len = get_array_len(parse(av + 1));
+	stacks[0] = fill_stack(stacks[0], formated_array, len);
 	return (stacks);
 }
 
-t_list	*fill_stack(t_list *stack, char **array)
+t_list	*fill_stack(t_list *stack, int *array, size_t len)
 {
-	t_list	*new;
-	int		i;
+	t_list		*new;
+	size_t		i;
+	int			*content;
 
 	i = 0;
-	while (array[i])
+	while (i < len)
 	{
-		if (array[i])
-			new = ft_lstnew(array[i]);
-		ft_lstadd_back(stack, new);
+		*content = ft_calloc(1, sizeof(int));
+		if (!content)
+			return (NULL);
+		*content = array[i];
+		new = ft_lstnew(content);
+		if (!new)
+			return (free(content), NULL);
+		ft_lstadd_back(&stack, new);
 		i++;
 	}
 }
