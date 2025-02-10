@@ -6,16 +6,16 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/02/07 11:24:24 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:05:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char			**parse(char **str_array);
-static size_t	get_array_len(char **array);
+const char			**parse(char **str_array);
+size_t				get_array_len(const char **array);
 
-static size_t	get_array_len(char **array)
+size_t	get_array_len(const char **array)
 {
 	size_t	len;
 
@@ -25,13 +25,14 @@ static size_t	get_array_len(char **array)
 	return (len);
 }
 
-char	**parse(char **str_array)
+const char	**parse(char **str_array)
 {
 	char	**formated_array;
 	int		i;
 	size_t	nb_elem;
 
 	i = 0;
+	nb_elem = 0;
 	formated_array = NULL;
 	formated_array = ft_calloc(1, 1);
 	if (!formated_array)
