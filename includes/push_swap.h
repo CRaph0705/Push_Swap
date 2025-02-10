@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/07 12:50:25 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:17:35 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /* init.c */
 t_list			**init_stacks(void);
-t_list			*init_program(void);
+t_list			**init_program(int ac, char **av);
 
 /* parse.c */
 char			**parse(char **str_array);

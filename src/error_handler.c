@@ -6,10 +6,11 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:46 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/03 15:56:22 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:21:13 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 /* If no parameters are specified, the program must not display anything and give the
 prompt back. */
 
@@ -21,5 +22,13 @@ int	check_arg_valid(int ac, char **av);
 
 int	check_arg_valid(int ac, char **av)
 {
-	return (0);
+	if (ac < 2)
+		return (0);
+	return (1);
 }
+
+void	display_error(void)
+{
+	ft_putstr_fd("Error\n", 2);
+}
+/* error handler isdigit sur chaque item parsé, à la moindre erreur break */
