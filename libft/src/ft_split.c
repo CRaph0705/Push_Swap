@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:23:10 by rcochran          #+#    #+#             */
-/*   Updated: 2024/11/21 20:46:12 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:35:21 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char			**ft_split(char const *s, char c);
 static size_t	get_word_count(const char *str, char separator);
 static size_t	get_word_length(const char *str, char separator);
-static void		*cascade_free(char **str, int i);
+static void		*reverse_cascade_free(char **str, int i);
 
 static size_t	get_word_count(const char *str, char separator)
 {
@@ -47,7 +47,7 @@ static size_t	get_word_length(const char *str, char separator)
 	return (len);
 }
 
-static void	*cascade_free(char **str, int i)
+static void	*reverse_cascade_free(char **str, int i)
 {
 	while (i >= 0)
 	{
@@ -77,7 +77,7 @@ char	**ft_split(char const *s, char c)
 			{
 				tab[i] = ft_substr(s, 0, get_word_length(s, c));
 				if (tab[i] == NULL)
-					return (cascade_free(tab, i));
+					return (reverse_cascade_free(tab, i));
 				i++;
 				s += get_word_length(s, c);
 			}
