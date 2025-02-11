@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:15:58 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 11:21:08 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:34:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_realloc(void *ptr, size_t size)
 	new_ptr = malloc(size);
 	if (!new_ptr)
 		return (NULL);
-	memcpy(new_ptr, ptr, size);
+	ft_memmove(new_ptr, ptr, size);
 	free(ptr);
 	return (new_ptr);
 }
