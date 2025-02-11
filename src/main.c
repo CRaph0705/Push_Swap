@@ -6,32 +6,44 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/10 16:17:09 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:40:00 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// t_list	**stacks;
+// int	*stack_a;
+// check_arg_valid(ac, av);
+//ignore av[0]
+//return if <2 déjà géré
+// stack_a = ft_atoi(parse(av));
+// push_swap(stack_a);
+// stacks = init_program(ac, av);
 int	main(int ac, char **av)
 {
-	// t_list	**stacks;
-	// int	*stack_a;
-	int	*array;
-	int	i;
+	char	**array;
+	int		i;
 
 	i = 0;
-	// check_arg_valid(ac, av);
-	//ignore av[0]
-	//return if <2 déjà géré
-	// stack_a = ft_atoi(parse(av));
-	// push_swap(stack_a);
-	// stacks = init_program(ac, av);
-	array = format_arg(parse(av));
-
-	while (array[i] != '\0')
-	{
-		ft_printf("array[i] : %d", array[i]);
-		i++;
-	}
+	if (ac < 2)
+		return (0);
+	av++;
+	ac--;
+	// while (i < ac)
+	// {
+	// 	printf("av[%d] = %s\n", i, av[i]);
+	// 	i++;
+	// }
+	i = 0;
+	array = parse(av, ' ');
+	// while (array[i] != NULL)
+	// {
+	// 	printf("i = %d, array[i] = %s\n", i, array[i]);
+	// 	ft_printf("array[i] : %s\n", array[i]);
+	// 	i++;
+	// }
+	(void)i;
+	(void)array;
 	return (0);
 }

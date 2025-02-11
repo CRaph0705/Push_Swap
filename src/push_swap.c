@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:06 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/03 13:04:44 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:05:05 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	**push_swap(int *stack_a)
 {
 	char	**instructions;
 
+	instructions = NULL;
+	(void)stack_a;
 	return (instructions);
 }
 

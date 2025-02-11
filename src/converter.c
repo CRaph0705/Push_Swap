@@ -6,19 +6,19 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:12:24 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/10 23:00:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:56:33 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*cascade_atoi(const char **formated_array, int *dest);
-int	atoi_dest(const char	*num_ptr, int *dest);
-int	*format_arg(char **av);
+int	*cascade_atoi(char **formated_array, int *dest);
+int	atoi_dest(char	*num_ptr, int *dest);
+int	*format_arg(char **num_str_array);
 
 //free formated_array l.74 or in error handler
 
-int	*cascade_atoi(const char **formated_array, int *dest)
+int	*cascade_atoi(char **formated_array, int *dest)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	*cascade_atoi(const char **formated_array, int *dest)
 	return (dest);
 }
 
-int	atoi_dest(const char	*num_ptr, int *dest)
+int	atoi_dest( char	*num_ptr, int *dest)
 {
 	int		sign;
 	long	nbr;
@@ -57,14 +57,13 @@ int	atoi_dest(const char	*num_ptr, int *dest)
 	return (1);
 }
 
-int	*format_arg(char **av)
+int	*format_arg( char **num_str_array)
 {
-	int			*int_array;
-	const char	**formated_array;
+	int				*int_array;
+	char		**formated_array;
 
-	//check error
-	formated_array = parse(av);
-	int_array = ft_calloc(get_array_len(formated_array), sizeof(int));
+	formated_array = parse(num_str_array, ' ');
+	int_array = ft_calloc(get_array_len(formated_array), sizeof(int *));
 	if (!int_array)
 		return (NULL);
 	int_array = cascade_atoi(formated_array, int_array);
