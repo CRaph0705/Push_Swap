@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 18:40:00 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:52:14 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int	main(int ac, char **av)
 	// 	ft_printf("array[i] : %s\n", array[i]);
 	// 	i++;
 	// }
-	(void)i;
-	(void)array;
+	while (array[i])
+	{
+		ft_printf("parsed_array[j] : %s\n", array[i]);
+		i++;
+	}
 	return (0);
 }

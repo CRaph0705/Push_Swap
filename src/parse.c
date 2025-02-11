@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/02/11 18:46:32 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:18:38 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,18 @@ char	**parse(char **str_array, char c)
 {
 	char	**parsed_array;
 	int		i;
-	int		j;
 	char	**split;
 
 	i = 0;
-	j = 0;
 	parsed_array = ft_calloc(1, sizeof(char *));
-	// ft_printf("debug\n");
-	// ft_printf("str_array[0] : %s\n", str_array[0]);
 	while (str_array[i])
 	{
-		ft_printf("str_array[i] : %s\n", str_array[i]);
 		split = ft_split(str_array[i], c);
 		if (!split)
 			return (cascade_free(parsed_array), NULL);
-		ft_printf("debug\n");
-		while (split[j])
-		{
-			ft_printf("split[i] : %s\n", split[j]);
-			j++;
-		}
-		//ici le premier split est bon puis seg fault
 		parsed_array = merge_array(parsed_array, split);
-		// i = 0;
 		i++;
-		j = 0;
 	}
-	while (parsed_array[j])
-	{
-		ft_printf("parsed_array[j] : %s\n", parsed_array[j]);
-		j++;
-	}
-	ft_printf("debug\n");
 	return (parsed_array);
 }
 
