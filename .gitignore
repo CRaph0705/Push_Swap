@@ -1,2 +1,7 @@
 ./vscode
 test.txt
+/obj
+push_swap
+
+/libft/obj
+/libft/libft.a
