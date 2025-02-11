@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/02/11 19:18:38 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:38:36 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	**merge_array(char **array, char **append)
 
 	i = 0;
 	j = 0;
-	len_fusion = get_array_len((char **)array) + get_array_len((char **)append) + 1;
+	len_fusion = get_array_len((char **)array)
+		+ get_array_len((char **)append) + 1;
 	fusion = ft_calloc(len_fusion, sizeof(char *));
 	if (!fusion)
 		return (NULL);
