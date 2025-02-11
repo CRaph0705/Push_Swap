@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/10 18:00:11 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/11 17:11:03 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@
 CC			= 	cc
 CFLAGS		= 	-Wall -Werror -Wextra
 AR			=	ar -rcs
-NAME		= 	push_swap.a
+NAME		= 	push_swap
 
 LIBFT_PATH	=	./libft
 LIBFT		=	$(LIBFT_PATH)/libft.a
 
-HEADER 		= 	$(LIBFT_PATH)
+INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes
 
-FILES		= 	converter display error_handler exit init instructions parse push_swap
+FILES		= 	main converter display error_handler exit init instructions parse push_swap
 
 SRC_FILES	=	$(addsuffix .c, $(FILES))
 OBJ_DIR		= obj/
@@ -44,18 +44,15 @@ fclean : clean
 re : fclean all
 
 $(NAME) : $(LIBFT) $(OBJ_DIR) $(OBJ)
-	$(AR) $(NAME) $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_PATH) -lft -o $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	$(CC) $(CFLAGS) -I$(LIBFT_PATH)/includes -I./includes -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR) : 
 	mkdir -p $(OBJ_DIR)
 
-prog: all
-	$(CC) src/main.c -c -I$(HEADER) -o obj/main.o
-	$(CC) obj/main.o -L. -lftprintf -o push_swap
 
