@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:12:24 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 14:04:31 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:31:27 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	atoi_strict(char	*num_ptr);
 int	*format_arg(char **num_str_array);
 int	check_if_convertible(char **str_array);
 int	is_num(char *str);
+int	ft_is_atoiable(char	*num_ptr);
+int ft_all_atoiable(char **array);
 
 //free formated_array l.74 or in error handler
 
@@ -25,14 +27,18 @@ int	*cascade_atoi(char **valid_array, size_t len)
 	size_t	i;
 	int	*int_array;
 	ft_printf("cascade atoi > len = %d\n", len);
-
-
+	if (len == 0)
+		return (ft_printf("cascade atoi, len == 0\n"), NULL);
+	int is_atoiable = ft_all_atoiable(valid_array);
+	ft_printf("converter > cascade atoi > is all atoiable : %d\n", is_atoiable);
+	if (is_atoiable == 0)
+		return (NULL);
 	int_array = malloc((len + 1) * sizeof(int));
 	if(!int_array)
 		return (ft_printf("cascade atoi, no malloc\n"),NULL);
 	i = 0;
-	if (len == 0)
-		return (ft_printf("cascade atoi, len == 0\n"), NULL);
+
+
 	while (i < len)
 	{
 		int_array[i] = atoi_strict(valid_array[i]);
@@ -50,7 +56,7 @@ int	*cascade_atoi(char **valid_array, size_t len)
 	return (int_array);
 }
 
-int	atoi_strict( char	*num_ptr)
+int	atoi_strict(char	*num_ptr)
 {
 	int		sign;
 	long	nbr;
@@ -73,6 +79,45 @@ int	atoi_strict( char	*num_ptr)
 		return (0);
 	return ((int)nbr);
 }
+int ft_all_atoiable(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		ft_printf("array[i]", array[i]);
+		if (ft_is_atoiable(array[i]) == 0)
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+int	ft_is_atoiable(char	*num_ptr)
+{
+	int		sign;
+	long	nbr;
+
+	sign = 1;
+	nbr = 0;
+	if (!num_ptr)
+		return (0);
+	if (*num_ptr == '-' && *num_ptr++)
+		sign = -1;
+	while (*num_ptr)
+	{
+		if (!ft_isdigit(*num_ptr))
+			return (0);
+		nbr = nbr * 10 + (*num_ptr - '0');
+		num_ptr++;
+	}
+	nbr *= sign;
+	if (nbr < INT_MIN || nbr > INT_MAX)
+		return (0);
+	return (1);
+}
 //si retval == null fonction precedente doit free num str array
 int	*format_arg( char **av)
 {
@@ -91,6 +136,8 @@ int	*format_arg( char **av)
 	if (!formated_array)
 		return (NULL);
 	formated_array = cascade_atoi(parsed_arg, len);
+	if (formated_array == NULL)
+		return (0);
 	size_t	i = 0;
 	while (i < len)
 	{
