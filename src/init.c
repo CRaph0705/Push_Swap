@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 15:54:58 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:08:07 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,16 @@ t_list	**init_program(int ac, char **av)
 	ft_printf("No dupe > Continue\n");
 	// if no error continue
 
-	// stacks = init_stacks();
+	stacks = init_stacks();
 
+	if (!stacks)
+		return (ft_printf("no stacks"), free(formated_array), NULL);
 	// if (check_stack_errors(stacks))
 		// return (freetout(), error_handler(), NULL);
-	// *stack_a = *stacks[0];
 	// *stack_b = *stacks[1];
-	// stacks[0] = fill_stack(stacks[0], formated_array, len);
+	stacks[0] = fill_stack(stacks[0], formated_array, len);
 	// return (stacks);
+	ft_printf("starts");
 	(void)stacks;
 	return (NULL);
 }
