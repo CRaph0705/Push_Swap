@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:46 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 15:56:44 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:44:24 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ prompt back. */
 Errors include for example: some arguments aren’t integers, some arguments are
 bigger than an integer and/or there are duplicates. */
 
+/* Returns 1 if it has dupes */
+int check_dupes(int *tab, size_t len);
 int	check_arg_valid(int ac, char **av);
 
 int	check_arg_valid(int ac, char **av)
@@ -48,5 +50,27 @@ int	check_stack_errors(t_list **stacks)
 {
 	(void)stacks;
 
+	return (0);
+}
+/* returns 1 if it has dupes */
+int check_dupes(int *tab, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	if (len == 0)
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		j = i + 1;
+		while (i + j < len)
+		{
+			if (tab[i] == tab[i + j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }

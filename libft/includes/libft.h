@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:28:08 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 11:20:00 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:30:43 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_list
 }					t_list;
 
 int					ft_isalpha(int c);
+/* Returns if int c is digit. 1 if true. 0 if false. */
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);

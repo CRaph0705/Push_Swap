@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 15:57:24 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:54:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 t_list			**init_stacks(void);
 t_list			**init_program(int ac, char **av);
 t_list			*fill_stack(t_list *stack, int *array, size_t len);
-int				*cascade_atoi(char **formated_array, int *dest);
-int				atoi_dest(char	*num_ptr, int *dest);
 
 //get stacks
 // init stack a, b
@@ -49,19 +47,27 @@ t_list	**init_program(int ac, char **av)
 	// t_list	*stack_b;
 	if (!check_arg_valid(ac, av))
 		return (error_handler(), NULL);
+	
+	len = get_array_len(parse(av, ' '));
 	formated_array = format_arg(av);
 	if (!formated_array)
 		return (freetout(), error_handler(), NULL);
 	//check formated array len
+	if (check_dupes(formated_array, len) == 1)
+		return (ft_printf("Dupe Exception > Error\n"), NULL);
+	ft_printf("No dupe > Continue\n");
 	// if no error continue
-	stacks = init_stacks();
-	if (check_stack_errors(stacks))
-		return (freetout(), error_handler(), NULL);
+
+	// stacks = init_stacks();
+
+	// if (check_stack_errors(stacks))
+		// return (freetout(), error_handler(), NULL);
 	// *stack_a = *stacks[0];
 	// *stack_b = *stacks[1];
-	len = get_array_len(parse(av, ' '));
-	stacks[0] = fill_stack(stacks[0], formated_array, len);
-	return (stacks);
+	// stacks[0] = fill_stack(stacks[0], formated_array, len);
+	// return (stacks);
+	(void)stacks;
+	return (NULL);
 }
 
 t_list	*fill_stack(t_list *stack, int *array, size_t len)
