@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 15:53:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:12:06 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ int	main(int ac, char **av)
 	// int		*int_array;
 	// int		i;
 	t_list	**stacks;
+	t_list	*stack_a;
 	// i = 0;
 	if (ac < 2)
 		return (0);
 	av++;
 	ac--;
 	stacks = init_program(ac, av);
+	stack_a = stacks[0];
 	(void)stacks;
 	// while (i < ac)
 	// {
