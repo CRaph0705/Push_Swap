@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 15:57:24 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:18:43 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 t_list			**init_stacks(void);
 t_list			**init_program(int ac, char **av);
 t_list			*fill_stack(t_list *stack, int *array, size_t len);
-int				*cascade_atoi(char **formated_array, int *dest);
-int				atoi_dest(char	*num_ptr, int *dest);
 
 //get stacks
 // init stack a, b
@@ -49,6 +47,7 @@ t_list	**init_program(int ac, char **av)
 	// t_list	*stack_b;
 	if (!check_arg_valid(ac, av))
 		return (error_handler(), NULL);
+	
 	formated_array = format_arg(av);
 	if (!formated_array)
 		return (freetout(), error_handler(), NULL);

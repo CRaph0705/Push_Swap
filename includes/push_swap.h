@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 15:54:49 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:58:37 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ char			**parse(char **str_array, char c);
 size_t			get_array_len(char **array);
 
 /* converter.c */
-int				*cascade_atoi(char **formated_array, int *dest);
-int				atoi_dest(char	*num_ptr, int *dest);
+int				*cascade_atoi(char **formated_array, size_t len);
+int				atoi_strict(char	*num_ptr);
 int				*format_arg(char **num_str_array);
+int	            check_if_convertible(char **str_array);
 
 /* error handling */
 int				check_arg_valid(int ac, char **av);
