@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/11 17:11:03 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/14 18:00:54 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT		=	$(LIBFT_PATH)/libft.a
 
 INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes
 
-FILES		= 	main converter display error_handler exit init instructions parse push_swap
+FILES		= 	main converter display error_handler exit init instructions parse stacks_functions stacks_functions2 push_swap
 
 SRC_FILES	=	$(addsuffix .c, $(FILES))
 OBJ_DIR		= obj/

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/14 17:27:48 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:09:53 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_stack
 }					t_stack;
 
 /* init.c */
-t_stack			**init_program(int ac, char **av);
+t_stack			*init_program(int ac, char **av);
 
 /* parse.c */
 char			**parse(char **str_array, char c);
@@ -48,11 +48,11 @@ int				check_stack_errors(t_stack ***stacks);
 int				check_dupes(int *tab, size_t len);
 
 /* stack utils */
-t_stack			*ft_stacknew(int *value);
+t_stack			*ft_stacknew(int value);
 void			ft_stackadd_back(t_stack **stack, t_stack *new);
 void			ft_stackadd_front(t_stack **stack, t_stack *new);
-void			ft_stackclear(t_stack **stack, void (*del)(void *));
-void			ft_stackdelone(t_stack *stack, void (*del)(void *));
+void			ft_stackclear(t_stack **stack);
+void			ft_stackdelone(t_stack *node);
 int				ft_stacksize(t_stack *stack);
 t_stack			*ft_stacklast(t_stack *stack);
 

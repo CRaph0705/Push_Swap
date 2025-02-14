@@ -6,20 +6,20 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:27:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/14 16:49:52 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:00:02 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_stacknew(int *value);
+t_stack	*ft_stacknew(int value);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
 void	ft_stackadd_front(t_stack **stack, t_stack *new);
-void	ft_stackclear(t_stack **stack, void (*del)(void *));
-void	ft_stackdelone(t_stack *stack, void (*del)(void *));
+void	ft_stackclear(t_stack **stack);
+void	ft_stackdelone(t_stack *node);
 
 /* create new element */
-t_stack	*ft_stacknew(int *value)
+t_stack	*ft_stacknew(int value)
 {
 	t_stack	*new_node;
 
@@ -53,7 +53,7 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 }
 
 /* delete target list */
-void	ft_stackclear(t_stack **stack, void (*del)(void *))
+void	ft_stackclear(t_stack **stack)
 {
 	t_stack	*current;
 	t_stack	*tmp_next;
@@ -64,18 +64,18 @@ void	ft_stackclear(t_stack **stack, void (*del)(void *))
 	while (current != NULL)
 	{
 		tmp_next = current->next;
-		ft_stackdelone(current, del);
+		ft_stackdelone(current);
 		current = tmp_next;
 	}
 	*stack = NULL;
 }
 
 /* delete target element */
-void	ft_stackdelone(t_stack *node, void (*del)(void *))
+void	ft_stackdelone(t_stack *node)
 {
 	if (node)
 	{
-		del(node->value);
+		node->value = 0;
 		free(node);
 	}
 }

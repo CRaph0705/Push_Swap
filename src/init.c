@@ -6,26 +6,30 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/14 17:44:16 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:23:43 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack			**init_program(int ac, char **av);
+t_stack			*init_program(int ac, char **av);
 t_stack			*fill_stack(t_stack *stack, int *array, size_t len);
 
-t_stack	**init_program(int ac, char **av)
+/* 
+rename this function : it initializes stack a and fills it
+no stack b initialized here anymore
+*/
+t_stack	*init_program(int ac, char **av)
 {
 	int		*formated_array;
 	size_t	len;
 	t_stack	*stack_a;
-	t_stack	*stack_b;
 
-	stack_b = NULL;
 	stack_a = NULL;
 	if (!check_arg_valid(ac, av))
-		return (error_handler(), NULL);
+		return (error_handler(), ft_printf("init leave error"), NULL);
+	av++;
+	ac--;
 	len = get_array_len(parse(av, ' '));
 	formated_array = format_arg(av);
 	if (!formated_array)
@@ -39,10 +43,9 @@ t_stack	**init_program(int ac, char **av)
 	// if (check_stack_errors(stacks))
 		// return (freetout(), error_handler(), NULL);
 	// *stack_b = *stacks[1];
-	fill_stack(stack_a, formated_array, len);
-	ft_printf("starts");
-	(void)stack_b;
-	return (NULL);
+	stack_a = fill_stack(stack_a, formated_array, len);
+	ft_printf("starts\n");
+	return (stack_a);
 }
 
 t_stack	*fill_stack(t_stack *stack, int *array, size_t len)
@@ -53,9 +56,9 @@ t_stack	*fill_stack(t_stack *stack, int *array, size_t len)
 	i = 0;
 	while (i < len)
 	{
-		new = ft_stacknew(&array[i]);
+		new = ft_stacknew(array[i]);
 		if (!new)
-			return (ft_stackclear(&stack, free), NULL);//freestack()
+			return (ft_stackclear(&stack), NULL);//freestack()
 		ft_stackadd_back(&stack, new);
 		i++;
 	}
