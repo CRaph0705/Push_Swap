@@ -6,89 +6,57 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 16:08:07 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:44:16 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list			**init_stacks(void);
-t_list			**init_program(int ac, char **av);
-t_list			*fill_stack(t_list *stack, int *array, size_t len);
+t_stack			**init_program(int ac, char **av);
+t_stack			*fill_stack(t_stack *stack, int *array, size_t len);
 
-//get stacks
-// init stack a, b
-// stack a = foreach (formated_array_item as item) -> new list item
-
-t_list	**init_stacks(void)
+t_stack	**init_program(int ac, char **av)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	**stacks;
-
-	stacks = malloc(sizeof(t_list *) * 2);
-	if (!stacks)
-		return (NULL);
-	stack_a = ft_lstnew(NULL);
-	stack_b = ft_lstnew(NULL);
-	if (!stack_a || !stack_b)
-		return (freetout(), error_handler(), NULL);
-	stacks[0] = stack_a;
-	stacks[1] = stack_b;
-	return (stacks);
-}
-
-t_list	**init_program(int ac, char **av)
-{
-	t_list	**stacks;
 	int		*formated_array;
 	size_t	len;
-	// t_list	*stack_a;
-	// t_list	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_b = NULL;
+	stack_a = NULL;
 	if (!check_arg_valid(ac, av))
 		return (error_handler(), NULL);
-	
 	len = get_array_len(parse(av, ' '));
 	formated_array = format_arg(av);
 	if (!formated_array)
 		return (freetout(), error_handler(), NULL);
-	//check formated array len
 	if (check_dupes(formated_array, len) == 1)
 		return (ft_printf("Dupe Exception > Error\n"), NULL);
 	ft_printf("No dupe > Continue\n");
 	// if no error continue
-
-	stacks = init_stacks();
-
-	if (!stacks)
-		return (ft_printf("no stacks"), free(formated_array), NULL);
+	// if (!stack_a || !stack_b)
+	// 	return (ft_printf("stack missing"), free(formated_array), NULL);//free stack a or b depending on which one is missing
 	// if (check_stack_errors(stacks))
 		// return (freetout(), error_handler(), NULL);
 	// *stack_b = *stacks[1];
-	stacks[0] = fill_stack(stacks[0], formated_array, len);
-	// return (stacks);
+	fill_stack(stack_a, formated_array, len);
 	ft_printf("starts");
-	(void)stacks;
+	(void)stack_b;
 	return (NULL);
 }
 
-t_list	*fill_stack(t_list *stack, int *array, size_t len)
+t_stack	*fill_stack(t_stack *stack, int *array, size_t len)
 {
-	t_list		*new;
+	t_stack		*new;
 	size_t		i;
-	int			*content;
 
 	i = 0;
 	while (i < len)
 	{
-		content = ft_calloc(1, sizeof(int));
-		if (!content)
-			return (NULL);
-		*content = array[i];
-		new = ft_lstnew(content);
+		new = ft_stacknew(&array[i]);
 		if (!new)
-			return (free(content), NULL);//freestacks()
-		ft_lstadd_back(&stack, new);
+			return (ft_stackclear(&stack, free), NULL);//freestack()
+		ft_stackadd_back(&stack, new);
 		i++;
 	}
 	return (stack);

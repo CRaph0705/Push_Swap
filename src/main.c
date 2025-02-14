@@ -6,13 +6,13 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 16:12:06 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:07:55 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// t_list	**stacks;
+// t_stack	**stacks;
 // int	*stack_a;
 // check_arg_valid(ac, av);
 //ignore av[0]
@@ -20,28 +20,31 @@
 // stack_a = ft_atoi(parse(av));
 // push_swap(stack_a);
 // stacks = init_program(ac, av);
+// char	**array;
+// int		*int_array;
+// int		i;
+// i = 0;
 int	main(int ac, char **av)
 {
-	// char	**array;
-	// int		*int_array;
-	// int		i;
-	t_list	**stacks;
-	t_list	*stack_a;
-	// i = 0;
+	t_stack	**stacks;
+	t_stack	*stack_a;
+
 	if (ac < 2)
 		return (0);
 	av++;
 	ac--;
 	stacks = init_program(ac, av);
 	stack_a = stacks[0];
-	(void)stacks;
+	display_stack(stack_a, 1);
+	return (0);
+}
 	// while (i < ac)
 	// {
 	// 	printf("av[%d] = %s\n", i, av[i]);
 	// 	i++;
 	// }
 	// i = 0;
-	
+
 	//format_arg()
 /* 	array = parse(av, ' ');
 
@@ -63,5 +66,3 @@ int	main(int ac, char **av)
 		i++;
 	} */
 	// (void)int_array;
-	return (0);
-}

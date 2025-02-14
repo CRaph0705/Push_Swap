@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:46 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 15:44:24 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:54:00 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	display_error(void)
 }
 /* error handler isdigit sur chaque item parsé, à la moindre erreur break */
 
-int	check_stack_errors(t_list **stacks)
+int	check_stack_errors(t_stack ***stacks)
 {
 	(void)stacks;
-
 	return (0);
 }
+
 /* returns 1 if it has dupes */
 int check_dupes(int *tab, size_t len)
 {
