@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:12:24 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/14 12:20:27 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:58:42 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ int	*cascade_atoi(char **valid_array, size_t len)
 {
 	size_t	i;
 	int	*int_array;
-	ft_printf("cascade atoi > len = %d\n", len);
 	if (len == 0)
 		return (ft_printf("cascade atoi, len == 0\n"), NULL);
 	int is_atoiable = ft_all_atoiable(valid_array);
-	ft_printf("converter > cascade atoi > is all atoiable : %d\n", is_atoiable);
 	if (is_atoiable == 0)
 		return (NULL);
 	int_array = malloc((len + 1) * sizeof(int));
@@ -46,12 +44,7 @@ int	*cascade_atoi(char **valid_array, size_t len)
 	}
 	i = 0;
 	if (!int_array)
-		return (ft_printf("cascade atoi no int_array"), NULL);
-	while (i < len)
-	{
-		ft_printf("cascade atoi int_array[i] = %i\n", int_array[i]);
-		i++;
-	}
+		return (ft_printf("cascade atoi >>> no int_array"), NULL);
 
 	return (int_array);
 }
@@ -86,7 +79,6 @@ int ft_all_atoiable(char **array)
 	i = 0;
 	while (array[i])
 	{
-		ft_printf("array[i]", array[i]);
 		if (ft_is_atoiable(array[i]) == 0)
 		{
 			return (0);
@@ -131,19 +123,12 @@ int	*format_arg( char **av)
 		return (free(parsed_arg), ft_printf("format_arg is_convertible KO\n"), NULL);
 
 	len = get_array_len(parsed_arg);
-	ft_printf("format arg > len = %d\n", len);
 	formated_array = ft_calloc(len + 1, sizeof(int));
 	if (!formated_array)
 		return (NULL);
 	formated_array = cascade_atoi(parsed_arg, len);
 	if (formated_array == NULL)
 		return (0);
-	size_t	i = 0;
-	while (i < len)
-	{
-		ft_printf("format_arg after formated_array[%d] : %d\n", i, formated_array[i]);
-		i++;
-	}
 	return (ft_printf("format_arg is_convertible OK\n"), formated_array);
 }
 

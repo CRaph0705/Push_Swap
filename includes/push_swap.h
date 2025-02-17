@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/14 18:09:53 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:50:43 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,20 @@
 	(s_stack)	*next
 }
  */
+
+/* typedef struct s_ps
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+}	t_ps; */
+
 typedef struct s_stack
 {
 	int				value;
-	// int			id;
-	// int *nbr = (int *)ft_malloc(stack_a 5, sizeof(int));
 	struct s_stack	*next;
 }					t_stack;
+// int			id;
+// int *nbr = (int *)ft_malloc(stack_a 5, sizeof(int));
 
 /* init.c */
 t_stack			*init_program(int ac, char **av);

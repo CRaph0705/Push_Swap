@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:18:45 by rcochran          #+#    #+#             */
-/*   Updated: 2024/11/18 19:16:21 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:53:51 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	main(void)
 	buf = malloc(s * nelem);
 	if (buf == NULL)
 	{
-		printf("pouet");
+		printf("NULL");
 	}
 	else
 	{
-		printf("IZOKEY");
+		printf("else");
 	}
 	dest = ft_calloc(nelem, s);
 	free(buf);
