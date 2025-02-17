@@ -6,17 +6,34 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 15:43:59 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:58:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft.h"
+/* typedef struct s_ps
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+}	t_ps; */
+
+/* {
+	(int)	value,
+	(s_stack)	*next
+}
+ */
+typedef struct s_stack
+{
+	int				value;
+	struct s_stack	*next;
+}					t_stack;
+// int			id;
+// int *nbr = (int *)ft_malloc(stack_a 5, sizeof(int));
 
 /* init.c */
-t_list			**init_stacks(void);
-t_list			**init_program(int ac, char **av);
+t_stack			*init_program(int ac, char **av);
 
 /* parse.c */
 char			**parse(char **str_array, char c);
@@ -32,11 +49,29 @@ int				check_if_convertible(char **str_array);
 int				check_arg_valid(int ac, char **av);
 void			freetout(void);
 void			error_handler(void);
-int				check_stack_errors(t_list **stacks);
+int				check_stack_errors(t_stack ***stacks);
 int				check_dupes(int *tab, size_t len);
 
+/* stack utils */
+t_stack			*ft_stacknew(int value);
+void			ft_stackadd_back(t_stack **stack, t_stack *new);
+void			ft_stackadd_front(t_stack **stack, t_stack *new);
+void			ft_stackclear(t_stack **stack);
+void			ft_stackdelone(t_stack *node);
+int				ft_stacksize(t_stack *stack);
+t_stack			*ft_stacklast(t_stack *stack);
 
 /* core */
 char			**push_swap(int *stack_a);
+
+/* displays node value in specified fd */
+void			display_stack(t_stack *stack, int fd);
+
+/* instructions */
+/* swap */
+void			ft_swap(t_stack **stack);
+void			sa(t_stack **stack_a);
+void			sb(t_stack **stack_b);
+void			ss(t_stack **stack_a, t_stack **stack_b);
 
 #endif
