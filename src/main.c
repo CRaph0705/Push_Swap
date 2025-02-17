@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/17 11:51:27 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:58:49 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	main(int ac, char **av)
 		return (0);
 	stack_a = init_program(ac, av);
 	display_stack(stack_a, 1);
+	ft_swap(&stack_a);
+	display_stack(stack_a, 1);
+	free(stack_a);
 	return (0);
 }
 	// while (i < ac)

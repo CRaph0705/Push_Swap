@@ -6,26 +6,24 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/17 13:50:43 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:58:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft.h"
-
-/* {
-	(int)	value,
-	(s_stack)	*next
-}
- */
-
 /* typedef struct s_ps
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 }	t_ps; */
 
+/* {
+	(int)	value,
+	(s_stack)	*next
+}
+ */
 typedef struct s_stack
 {
 	int				value;
@@ -68,5 +66,12 @@ char			**push_swap(int *stack_a);
 
 /* displays node value in specified fd */
 void			display_stack(t_stack *stack, int fd);
+
+/* instructions */
+/* swap */
+void			ft_swap(t_stack **stack);
+void			sa(t_stack **stack_a);
+void			sb(t_stack **stack_b);
+void			ss(t_stack **stack_a, t_stack **stack_b);
 
 #endif
