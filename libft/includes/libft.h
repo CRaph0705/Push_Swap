@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:28:08 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/12 11:30:43 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:40:04 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
 int					is_in_base(char c, char *base);
 int					is_base_valid(char *base);
 
+void				ft_swap(int *a, int *b);
 #endif

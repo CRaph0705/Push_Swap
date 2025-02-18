@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 17:15:49 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/11 11:22:53 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/18 12:40:19 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,8 @@ FILES :=	ft_atoi \
 			ft_print_num \
 			ft_print_ptr \
 			ft_printf_utils \
-			ft_printf
+			ft_printf \
+			ft_swap
 
 NAME := libft.a
 HEADER := includes/

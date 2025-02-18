@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/17 14:58:49 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:24:46 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,22 @@
 // i = 0;
 int	main(int ac, char **av)
 {
-	t_stack	*stack_a;
+	t_stack	**stack_a;
+	t_stack	**stack_b;
 
+	stack_b = NULL;
 	if (ac < 2)
 		return (0);
 	stack_a = init_program(ac, av);
 	display_stack(stack_a, 1);
-	ft_swap(&stack_a);
-	display_stack(stack_a, 1);
-	free(stack_a);
+	// swap(stack_a);
+	// display_stack(*stack_a, 1);
+	// push(stack_a, stack_b);
+	// display_stack(*stack_a, 1);
+	// ft_printf(">>>>>>>>>>>>>>><<<<<<<<<<<<<<<");
+	// display_stack(*stack_b, 1);
+	ft_stackclear(stack_a);
+	ft_stackclear(stack_b);
 	return (0);
 }
 	// while (i < ac)
