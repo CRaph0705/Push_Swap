@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/18 20:09:14 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:38:31 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ t_stack	**init_program(int ac, char **av)
 	if (check_dupes(formated_array, len) == 1)
 		return (ft_printf("Dupe Exception > Error\n"), NULL);
 	ft_printf("No dupe > Continue\n");
-
 	printf(">>> init program : formated array [0] = %i\n", formated_array[0]);
 	printf(">>>init program : len = %zu\n", len);
 	stack_a = fill_stack(stack_a, formated_array, len);
+	//>>>>>>set_target_pos(stack_a);
 	ft_printf("starts\n");
-	if (!stack_a)
-		printf("oh oh probleme\n");
 	return (stack_a);
 }
 
