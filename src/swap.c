@@ -6,11 +6,19 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:05:38 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/17 14:59:46 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:39:46 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+sa (swap a): Swap the first 2 elements at the top of stack a.
+Do nothing if there is only one or no elements.
+sb (swap b): Swap the first 2 elements at the top of stack b.
+Do nothing if there is only one or no elements.
+ss : sa and sb at the same time.
+*/
 
 // int		swap_conditions(t_stack *stack);
 void	ft_swap(t_stack **stack);

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/17 14:58:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:13:36 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack
 // int *nbr = (int *)ft_malloc(stack_a 5, sizeof(int));
 
 /* init.c */
-t_stack			*init_program(int ac, char **av);
+t_stack			**init_program(int ac, char **av);
 
 /* parse.c */
 char			**parse(char **str_array, char c);
@@ -62,16 +62,22 @@ int				ft_stacksize(t_stack *stack);
 t_stack			*ft_stacklast(t_stack *stack);
 
 /* core */
-char			**push_swap(int *stack_a);
+void			push_swap(t_stack **stack_a, t_stack **stack_b);
 
 /* displays node value in specified fd */
 void			display_stack(t_stack *stack, int fd);
 
-/* instructions */
-/* swap */
-void			ft_swap(t_stack **stack);
-void			sa(t_stack **stack_a);
-void			sb(t_stack **stack_b);
-void			ss(t_stack **stack_a, t_stack **stack_b);
+/* INSTRUCTIONS */
 
+/* SWAP */
+/* Swap the first 2 elements at the top of given stack. */
+void			ft_swap(t_stack **stack);
+/* sa (swap a): Swap the first 2 elements at the top of stack a. 
+Do nothing if there is only one or no elements. */
+void			sa(t_stack **stack_a);
+/* sb (swap b): Swap the first 2 elements at the top of stack b.
+Do nothing if there is only one or no elements. */
+void			sb(t_stack **stack_b);
+/* ss : sa and sb at the same time. */
+void			ss(t_stack **stack_a, t_stack **stack_b);
 #endif

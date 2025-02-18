@@ -6,13 +6,13 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:06 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/11 15:05:05 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:56:05 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**push_swap(int *stack_a);
+void	push_swap(t_stack **stack_a, t_stack **stack_b);
 
 /* You have to write a program named push_swap that takes as an argument the stack
 a formatted as a list of integers. The first argument should be at the top of the
@@ -22,13 +22,11 @@ stack (be careful about the order). */
 a, the smallest number being at the top. */
 
 /* • Instructions must be separated by a ’\n’ and nothing else. */
-char	**push_swap(int *stack_a)
+void	push_swap(t_stack **stack_a, t_stack **stack_b)
 {
-	char	**instructions;
-
-	instructions = NULL;
-	(void)stack_a;
-	return (instructions);
+	(void) stack_a;
+	(void) stack_b;
+	return ;
 }
 
 /* 
