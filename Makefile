@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/17 14:19:20 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/18 12:06:02 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,4 +55,6 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 $(OBJ_DIR) : 
 	mkdir -p $(OBJ_DIR)
 
+debug : $(LIBFT) $(OBJ_DIR) $(OBJ)
+	$(CC) -g $(CFLAGS) $(OBJ) -L$(LIBFT_PATH) -lft -o $(NAME)
 

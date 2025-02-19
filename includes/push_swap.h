@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/17 14:58:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:55:50 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,24 @@
 }	t_ps; */
 
 /* {
-	(int)	value,
-	(s_stack)	*next
+	int				value;
+	struct s_stack	*next;
+	int				target_pos;
+	int				index;
 }
  */
 typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
+	int				target_pos;
+	int				index;
 }					t_stack;
 // int			id;
 // int *nbr = (int *)ft_malloc(stack_a 5, sizeof(int));
 
 /* init.c */
-t_stack			*init_program(int ac, char **av);
+t_stack			**init_program(int ac, char **av);
 
 /* parse.c */
 char			**parse(char **str_array, char c);
@@ -59,19 +63,28 @@ void			ft_stackadd_front(t_stack **stack, t_stack *new);
 void			ft_stackclear(t_stack **stack);
 void			ft_stackdelone(t_stack *node);
 int				ft_stacksize(t_stack *stack);
-t_stack			*ft_stacklast(t_stack *stack);
+t_stack			*ft_stacklast(t_stack **stack);
 
 /* core */
-char			**push_swap(int *stack_a);
+void			push_swap(t_stack **stack_a, t_stack **stack_b);
+
+/* DISPLAY */
 
 /* displays node value in specified fd */
-void			display_stack(t_stack *stack, int fd);
+void			display_stack(t_stack **stack, int fd);
 
-/* instructions */
-/* swap */
-void			ft_swap(t_stack **stack);
+/* INSTRUCTIONS */
+/* SWAP */
+
+void			swap(t_stack **stack);
 void			sa(t_stack **stack_a);
 void			sb(t_stack **stack_b);
 void			ss(t_stack **stack_a, t_stack **stack_b);
+
+/* PUSH */
+
+void			push(t_stack **src, t_stack **dest);
+void			pa(t_stack **stack_b, t_stack **stack_a);
+void			pb(t_stack **stack_a, t_stack **stack_b);
 
 #endif
