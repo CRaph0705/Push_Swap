@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 12:37:12 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:42:17 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int				check_dupes(int *tab, size_t len);
 
 /* stack utils */
 t_stack			*ft_stacknew(int value);
-void			ft_stackadd_back(t_stack **stack, t_stack *new);
-void			ft_stackadd_front(t_stack **stack, t_stack *new);
+void			ft_stackadd_back(t_stack **stack, t_stack *node);
+void			ft_stackadd_front(t_stack **stack, t_stack *node);
 void			ft_stackclear(t_stack **stack);
 void			ft_stackdelone(t_stack *node);
 int				ft_stacksize(t_stack *stack);
@@ -87,5 +87,19 @@ void			ss(t_stack **stack_a, t_stack **stack_b);
 void			push(t_stack **src, t_stack **dest);
 void			pa(t_stack **stack_b, t_stack **stack_a);
 void			pb(t_stack **stack_a, t_stack **stack_b);
+
+/* ROTATE */
+
+void			r(t_stack **stack);
+void			ra(t_stack **stack_a);
+void			rb(t_stack **stack_b);
+void			rr(t_stack **stack_a, t_stack **stack_b);
+
+/* REVERSE ROTATE */
+
+void			r_r(t_stack	**stack);
+void			rra(t_stack **stack_a);
+void			rrb(t_stack **stack_b);
+void			rrr(t_stack **stack_a, t_stack **stack_b);
 
 #endif
