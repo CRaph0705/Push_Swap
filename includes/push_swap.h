@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/18 19:55:50 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:37:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			ft_stackclear(t_stack **stack);
 void			ft_stackdelone(t_stack *node);
 int				ft_stacksize(t_stack *stack);
 t_stack			*ft_stacklast(t_stack **stack);
+void			update_indices(t_stack **stack);
 
 /* core */
 void			push_swap(t_stack **stack_a, t_stack **stack_b);

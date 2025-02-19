@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:15:31 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/18 16:46:01 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:35:05 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	push(t_stack **src, t_stack **dest)
 	node = (*src);
 	*src = (*src)->next;
 	ft_stackadd_front(dest, node);
+	update_indices(src);
+	update_indices(dest);
 }
 
 /* pa (push a): 
