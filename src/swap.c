@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:05:38 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/18 16:34:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:34:49 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	swap(t_stack **stack)
 	current->next = next->next;
 	next->next = current;
 	*stack = next;
+	update_indices(stack);
 	ft_putstr(">>>swap\n");
 }
 
