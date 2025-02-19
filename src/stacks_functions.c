@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:27:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 14:43:09 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:49:21 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_stack	*ft_stacknew(int value)
 {
 	t_stack	*new_node;
 
-	ft_printf(">>>ft_stacknew\n");
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
@@ -34,7 +33,7 @@ t_stack	*ft_stacknew(int value)
 	return (new_node);
 }
 
-/* add new element at end of stack */
+/* add element at end of stack */
 void	ft_stackadd_back(t_stack **stack, t_stack *node)
 {
 	t_stack	*last;
@@ -48,7 +47,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *node)
 		*stack = node;
 }
 
-/* add new element at beginnig of stack */
+/* add element at beginnig of stack */
 void	ft_stackadd_front(t_stack **stack, t_stack *node)
 {
 	t_stack	*head;

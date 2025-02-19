@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/19 14:38:41 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/19 15:56:20 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ FILES		= 	converter \
 				stacks_functions2 \
 				stacks_utils \
 				swap \
+				target_position
 
 SRC_FILES	=	$(addsuffix .c, $(FILES))
 OBJ_DIR		= obj/

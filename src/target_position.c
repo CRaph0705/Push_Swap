@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks_utils.c                                     :+:      :+:    :+:   */
+/*   target_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 13:55:37 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 15:53:00 by rcochran         ###   ########.fr       */
+/*   Created: 2025/02/19 14:59:14 by rcochran          #+#    #+#             */
+/*   Updated: 2025/02/19 15:53:06 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	update_indices(t_stack **stack);
+void	fill_target_pos(t_stack **stack_a);
+void	set_target_pos(t_stack *node, long pos);
 
-void	update_indices(t_stack **stack)
+int	get_target_pos(t_stack *node)
 {
-	long	index;
-	t_stack	*current;
+	return (0);
+}
 
-	current = *stack;
-	index = 0;
-	while (current != NULL)
+void	fill_target_pos(t_stack **stack)
+{
+	t_stack	*current;
+	long	pos;
+
+	if (!stack || !(*stack))
+		return ;
+	pos = -1;
+	current = (*stack);
+	while ((*stack) != NULL)
 	{
-		current->index = index;
+		set_target_pos(current, pos);
 		current = current->next;
-		index++;
 	}
-	return ;
+}
+
+void	set_target_pos(t_stack *node, long pos)
+{
+	if (!node || !pos)
+		return ;
+	node->target_pos = pos;
 }

@@ -6,15 +6,15 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:38:33 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/18 12:39:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:55:28 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_swap(int *a, int *b);
+void	ft_swap(long *a, long *b);
 
-void	ft_swap(int *a, int *b)
+void	ft_swap(long *a, long *b)
 {
 	int	temp;	
 

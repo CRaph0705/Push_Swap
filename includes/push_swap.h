@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 14:42:17 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:53:17 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
-	int				target_pos;
-	int				index;
+	long			target_pos;
+	long			index;
 }					t_stack;
 // int			id;
 // int *nbr = (int *)ft_malloc(stack_a 5, sizeof(int));
@@ -57,6 +57,7 @@ int				check_stack_errors(t_stack ***stacks);
 int				check_dupes(int *tab, size_t len);
 
 /* stack utils */
+
 t_stack			*ft_stacknew(int value);
 void			ft_stackadd_back(t_stack **stack, t_stack *node);
 void			ft_stackadd_front(t_stack **stack, t_stack *node);
@@ -64,8 +65,12 @@ void			ft_stackclear(t_stack **stack);
 void			ft_stackdelone(t_stack *node);
 int				ft_stacksize(t_stack *stack);
 t_stack			*ft_stacklast(t_stack **stack);
-void			update_indices(t_stack **stack);
 
+/* stack init */
+
+void			update_indices(t_stack **stack);
+void			fill_target_pos(t_stack **stack);
+void			set_target_pos(t_stack *stack_a, long pos);
 /* core */
 void			push_swap(t_stack **stack_a, t_stack **stack_b);
 
