@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/18 20:38:31 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:53:26 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,12 @@ t_stack	**fill_stack(t_stack **stack, int *array, size_t len)
 	i = 0;
 	while (i < len)
 	{
-		ft_printf(">>>fill_stack, début du while\n");
 		node = ft_stacknew(array[i]);
 		if (!node)
 			return (ft_stackclear(stack), NULL);
-		ft_printf(">>>fill_stack, continue\n");
 		node->index = i;
 		ft_stackadd_back(stack, node);
 		i++;
 	}
-	ft_printf(">>>fill_stack : sortie de while ?\n");
 	return (stack);
 }

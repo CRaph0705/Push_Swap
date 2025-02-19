@@ -6,15 +6,15 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:27:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/18 20:04:45 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:19:20 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 t_stack	*ft_stacknew(int value);
-void	ft_stackadd_back(t_stack **stack, t_stack *new);
-void	ft_stackadd_front(t_stack **stack, t_stack *new);
+void	ft_stackadd_back(t_stack **stack, t_stack *node);
+void	ft_stackadd_front(t_stack **stack, t_stack *node);
 void	ft_stackclear(t_stack **stack);
 void	ft_stackdelone(t_stack *node);
 
@@ -35,34 +35,49 @@ t_stack	*ft_stacknew(int value)
 }
 
 /* add new element at end of stack */
-void	ft_stackadd_back(t_stack **stack, t_stack *new)
+void	ft_stackadd_back(t_stack **stack, t_stack *node)
 {
 	t_stack	*last;
 
 	ft_printf(">>>ft_stackadd_back\n");
-	if (!new)
+	if (!node)
 		return ;
 	last = ft_stacklast((stack));
 	if (last != NULL)
 	{
 		ft_printf(">>>ft_stackadd_back : if !last\n");
-		last->next = new;
+		last->next = node;
 	}
 	else
 	{
 		ft_printf(">>>ft_stackadd_back : else\n");
-		*stack = new;
+		*stack = node;
 	}
 }
 
 /* add new element at beginnig of stack */
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
+void	ft_stackadd_front(t_stack **stack, t_stack *node)
 {
+	t_stack	*head;
+
 	ft_printf(">>>ft_stackadd_front\n");
-	if (*stack == NULL)
-		*stack = new;
-	new->next = *stack;
-	*stack = new;
+	if (!node)
+	{
+		ft_printf("no node, return\n");
+		return ;
+	}
+	ft_printf("node, continue\n");
+	head = (*stack);
+	if (!head)
+	{
+		ft_printf("no head, assign\n");
+		node->next = NULL;
+		*stack = node;
+		return ;
+	}
+	ft_printf("head, continue\n");
+	*stack = node;
+	node->next = head;
 }
 
 /* delete target list */
