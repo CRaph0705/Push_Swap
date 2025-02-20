@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 15:53:17 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:28:18 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ t_stack			*ft_stacklast(t_stack **stack);
 /* stack init */
 
 void			update_indices(t_stack **stack);
-void			fill_target_pos(t_stack **stack);
+void			init_target_pos(t_stack **stack, int *array, size_t len);
+long			get_target_pos(t_stack *node);
 void			set_target_pos(t_stack *stack_a, long pos);
 /* core */
 void			push_swap(t_stack **stack_a, t_stack **stack_b);
@@ -78,6 +79,7 @@ void			push_swap(t_stack **stack_a, t_stack **stack_b);
 
 /* displays node value in specified fd */
 void			display_stack(t_stack **stack, int fd);
+void			display_node(t_stack *node, int fd);
 
 /* INSTRUCTIONS */
 /* SWAP */
