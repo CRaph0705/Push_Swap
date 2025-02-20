@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:13:30 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 13:29:32 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:37:10 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	display_stack(t_stack **stack, int fd)
 {
 	t_stack	*node;
 
-	if (!stack || !*stack)
+	if (!stack || !(*stack))
 	{
 		ft_printf(">>>display_stack : !stack || !*stack\n");
 		return ;

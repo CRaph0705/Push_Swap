@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 13:19:54 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:11:35 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_stack	**init_program(int ac, char **av)
 	if (check_dupes(formated_array, len) == 1)
 		return (ft_printf("Dupe Exception > Error\n"), NULL);
 	stack_a = fill_stack(stack_a, formated_array, len);
-	ft_printf("stack filled\n");
 	init_target_pos(stack_a, formated_array, len);
 	free(formated_array);
 	return (stack_a);

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 13:28:18 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:19:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_stack
 	struct s_stack	*next;
 	long			target_pos;
 	long			index;
+	// long			gap_top;
+	// long			gap_bot;
 }					t_stack;
 // int			id;
 // int *nbr = (int *)ft_malloc(stack_a 5, sizeof(int));
@@ -56,6 +58,10 @@ void			error_handler(void);
 int				check_stack_errors(t_stack ***stacks);
 int				check_dupes(int *tab, size_t len);
 
+/* UTILS */
+
+void			ft_sort_int_tab(int *tab, size_t size);
+
 /* stack utils */
 
 t_stack			*ft_stacknew(int value);
@@ -72,6 +78,7 @@ void			update_indices(t_stack **stack);
 void			init_target_pos(t_stack **stack, int *array, size_t len);
 long			get_target_pos(t_stack *node);
 void			set_target_pos(t_stack *stack_a, long pos);
+
 /* core */
 void			push_swap(t_stack **stack_a, t_stack **stack_b);
 
@@ -108,5 +115,8 @@ void			r_r(t_stack	**stack);
 void			rra(t_stack **stack_a);
 void			rrb(t_stack **stack_b);
 void			rrr(t_stack **stack_a, t_stack **stack_b);
+
+/* SORT FUNCTIONS */
+void			insertion_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:15:31 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 19:18:04 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:38:51 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Do nothing if b is empty. */
 void	pa(t_stack **stack_b, t_stack **stack_a)
 {
 	push(stack_b, stack_a);
-	ft_putstr("pa");
+	ft_putstr("pa\n");
 }
 
 /* pb (push b): 
@@ -45,5 +45,5 @@ Do nothing if a is empty. */
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
-	ft_putstr("pb");
+	ft_putstr("pb\n");
 }
