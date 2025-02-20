@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/19 15:56:20 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/20 16:12:56 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,12 @@ FILES		= 	converter \
 				init \
 				main \
 				parse \
+				push_swap_utils \
 				push_swap \
 				push \
 				reverse_rotate \
 				rotate \
+				sort \
 				stacks_functions \
 				stacks_functions2 \
 				stacks_utils \

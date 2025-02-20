@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks_utils.c                                     :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 13:55:37 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 16:08:43 by rcochran         ###   ########.fr       */
+/*   Created: 2025/02/20 21:39:31 by rcochran          #+#    #+#             */
+/*   Updated: 2025/02/20 21:44:20 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	update_indices(t_stack **stack);
+int	*random_int_array_generator(long nb_elem);
 
-void	update_indices(t_stack **stack)
+int	*random_int_array_generator(long nb_elem)
 {
-	long	index;
-	t_stack	*current;
+	int	*array;
 
-	current = *stack;
-	index = 0;
-	while (current != NULL)
-	{
-		current->index = index;
-		current = current->next;
-		index++;
-	}
-	return ;
+	return (array);
 }

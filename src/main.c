@@ -6,11 +6,13 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 14:41:33 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:33:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	push_swap(t_stack **stack_a, t_stack **stack_b);
 
 // t_stack	**stacks;
 // int	*stack_a;
@@ -36,26 +38,11 @@ int	main(int ac, char **av)
 	if (!stack_b)
 		return (0);
 	stack_a = init_program(ac, av);
-	display_stack(stack_a, 1);
-	// pb(stack_a, stack_b);
 	// display_stack(stack_a, 1);
-	// display_stack(stack_b, 1);
-	// pb(stack_a, stack_b);
-	ft_printf("\n \n -------------------- \n \n");
+	// ft_printf("\n \n -------------------- SORT --------------------\n \n");
+	push_swap(stack_a, stack_b);
+	// ft_printf("\n \n -------------------- DONE --------------------\n \n");
 	// display_stack(stack_a, 1);
-	// display_stack(stack_b, 1);
-	// pa(stack_b, stack_a);
-	rra(stack_a);
-	ft_printf("\n \n -------------------- \n \n");
-	display_stack(stack_a, 1);
-	// display_stack(stack_b, 1);
-
-	// swap(stack_a);
-	// display_stack(*stack_a, 1);
-	// push(stack_a, stack_b);
-	// display_stack(*stack_a, 1);
-	// ft_printf(">>>>>>>>>>>>>>><<<<<<<<<<<<<<<");
-	// display_stack(*stack_b, 1);
 	ft_stackclear(stack_a);
 	ft_stackclear(stack_b);
 	return (0);

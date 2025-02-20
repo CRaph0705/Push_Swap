@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks_utils.c                                     :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 13:55:37 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 16:08:43 by rcochran         ###   ########.fr       */
+/*   Created: 2025/02/20 16:10:45 by rcochran          #+#    #+#             */
+/*   Updated: 2025/02/20 16:11:22 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	update_indices(t_stack **stack);
+void	ft_sort_int_tab(int *tab, size_t size);
 
-void	update_indices(t_stack **stack)
+//sort array, when int array[i] == node->value : node->target_pos = i;
+void	ft_sort_int_tab(int *tab, size_t size)
 {
-	long	index;
-	t_stack	*current;
+	size_t	i;
+	size_t	j;
+	int		temp;
 
-	current = *stack;
-	index = 0;
-	while (current != NULL)
+	i = 0;
+	while (i < size)
 	{
-		current->index = index;
-		current = current->next;
-		index++;
+		j = i + 1;
+		while (j < size)
+		{
+			if (tab[i] > tab[j])
+			{
+				temp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = temp;
+			}
+			j++;
+		}
+		i++;
 	}
-	return ;
 }

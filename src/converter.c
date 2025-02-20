@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:12:24 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/17 11:58:42 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:12:41 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int	*format_arg( char **av)
 	formated_array = cascade_atoi(parsed_arg, len);
 	if (formated_array == NULL)
 		return (0);
-	return (ft_printf("format_arg is_convertible OK\n"), formated_array);
+	return (formated_array);
 }
 
 int	check_if_convertible(char **str_array)

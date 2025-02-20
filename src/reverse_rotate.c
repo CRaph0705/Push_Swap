@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:49:57 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 14:34:43 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:38:40 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	r_r(t_stack	**stack)
 	ft_stackadd_front(stack, last);
 	forelast->next = NULL;
 	*stack = last;
+	update_indices(stack);
 	return ;
 }
 
@@ -47,7 +48,7 @@ void	rra(t_stack **stack_a)
 	if (!stack_a || !(*stack_a))
 		return ;
 	r_r(stack_a);
-	ft_putstr("rra");
+	ft_putstr("rra\n");
 }
 
 /* rrb (reverse rotate b): Shift down all elements of stack b by 1.
@@ -57,7 +58,7 @@ void	rrb(t_stack **stack_b)
 	if (!stack_b || !(*stack_b))
 		return ;
 	r_r(stack_b);
-	ft_putstr("rrb");
+	ft_putstr("rrb\n");
 }
 
 /* rrr : rra and rrb at the same time. */
@@ -67,5 +68,5 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	r_r(stack_a);
 	r_r(stack_b);
-	ft_putstr("rrr");
+	ft_putstr("rrr\n");
 }
