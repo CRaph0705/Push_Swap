@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 19:57:48 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:33:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	main(int ac, char **av)
 	if (!stack_b)
 		return (0);
 	stack_a = init_program(ac, av);
-	display_stack(stack_a, 1);
-	ft_printf("\n \n -------------------- SORT --------------------\n \n");
+	// display_stack(stack_a, 1);
+	// ft_printf("\n \n -------------------- SORT --------------------\n \n");
 	push_swap(stack_a, stack_b);
-	ft_printf("\n \n -------------------- DONE --------------------\n \n");
-	// display_stack(stack_b, 1);
+	// ft_printf("\n \n -------------------- DONE --------------------\n \n");
+	// display_stack(stack_a, 1);
 	ft_stackclear(stack_a);
 	ft_stackclear(stack_b);
 	return (0);

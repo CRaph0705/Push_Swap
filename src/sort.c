@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:16:22 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 21:26:47 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:29:13 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ long	get_stack_min_target(t_stack **stack)
 		}
 		cursor = cursor->next;
 	}
-	printf("DEBUG :: >>> min target : %li\n", min_target);
 	return (min_target);
 }
 
@@ -76,16 +75,10 @@ void	insertion_sort(t_stack **stack_a, t_stack **stack_b)
 			ra(stack_a);
 		}
 		pb(stack_a, stack_b);
-		display_stack(stack_a, 1);
 	}
-
-	// while (!(!(stack_b)))
-	// {
-	// 	pa(stack_b, stack_a);
-	// }
-	ft_printf("\ndisplay stack a : \n");
-	display_stack(stack_a, 1);
-	ft_printf("\ndisplay stack b : \n");
-	display_stack(stack_b, 1);
+	while ((*stack_b) != NULL)
+	{
+		pa(stack_b, stack_a);
+	}
 	return ;
 }
