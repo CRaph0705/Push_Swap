@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/02/14 12:20:02 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:18:32 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ char	**parse(char **str_array, char c)
 		parsed_array = merge_array(parsed_array, split);
 		i++;
 	}
-	// i = 0;
-	// while (parsed_array[i])
-	// {
-	// 	ft_printf(parsed_array[i]);
-	// 	i++;
-	// }
 	return (parsed_array);
 }
 

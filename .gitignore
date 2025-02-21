@@ -1,7 +1,10 @@
-./vscode
+/.vscode
 
 /obj
 push_swap
 
 /libft/obj
 /libft/libft.a
+
+/ARG*
+/checker_*
