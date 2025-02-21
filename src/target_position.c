@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:59:14 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 16:19:20 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:14:02 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ long	get_num_index(int n, int *array, size_t size)
 	return (i);
 }
 
+//l.50 -> gérer error
 void	init_target_pos(t_stack **stack, int *array, size_t len)
 {
 	t_stack	*current;
@@ -46,7 +47,7 @@ void	init_target_pos(t_stack **stack, int *array, size_t len)
 	{
 		pos = get_num_index(current->value, array, len);
 		if (pos == -1)
-			return ;//error
+			return ;
 		set_target_pos(current, pos);
 		if (current->next == NULL)
 			return ;

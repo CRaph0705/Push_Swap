@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/20 16:12:56 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/21 11:09:02 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ FILES		= 	converter \
 				error_handler \
 				exit \
 				init \
+				insertion_sort_utils \
+				insertion_sort \
 				main \
 				parse \
 				push_swap_utils \

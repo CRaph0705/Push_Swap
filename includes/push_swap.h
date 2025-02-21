@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 21:19:58 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:09:51 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,8 @@ void			rrr(t_stack **stack_a, t_stack **stack_b);
 
 /* SORT FUNCTIONS */
 void			insertion_sort(t_stack **stack_a, t_stack **stack_b);
+
+/* SORT UTILS */
+long			get_stack_min_target(t_stack **stack);
 
 #endif

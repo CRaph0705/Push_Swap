@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/20 14:11:35 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:14:42 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ rename this function : it initializes stack a and fills it
 no stack b initialized here anymore
 */
 
-
 // if no error continue
 // if (!stack_a || !stack_b)
-// 	return (ft_printf("stack missing"), free(formated_array), NULL);//free stack a or b depending on which one is missing
+// 	return (ft_printf("stack missing"), free(formated_array), NULL);
+//free stack a or b depending on which one is missing
 // if (check_stack_errors(stacks))
 	// return (freetout(), error_handler(), NULL);
 // *stack_b = *stacks[1];
