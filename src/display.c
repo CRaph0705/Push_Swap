@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:13:30 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/21 17:22:40 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:11:41 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	display_node(t_stack *node, int fd)
 	(void)fd;
 }
 
+/* displays node value in specified fd */
 void	display_stack(t_stack **stack, int fd)
 {
 	t_stack	*node;

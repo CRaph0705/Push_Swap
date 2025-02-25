@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/21 11:09:02 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/25 11:12:43 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,11 @@ LIBFT		=	$(LIBFT_PATH)/libft.a
 INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes
 
 FILES		= 	converter \
+				converter_utils \
 				display \
 				error_handler \
 				exit \
+				get_node_by \
 				init \
 				insertion_sort_utils \
 				insertion_sort \
