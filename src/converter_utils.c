@@ -6,16 +6,16 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:05:23 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/21 17:10:25 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:13:52 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_if_convertible(char **str_array);
-int	is_num(char *str);
-int	ft_is_atoiable(char	*num_ptr);
-int	ft_all_atoiable(char **array);
+int			check_if_convertible(char **str_array);
+int			is_num(char *str);
+int			ft_is_atoiable(char	*num_ptr);
+int			ft_all_atoiable(char **array);
 
 int	check_if_convertible(char **str_array)
 {
