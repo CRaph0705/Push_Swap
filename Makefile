@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/25 11:12:43 by rcochran         ###   ########.fr        #
+#    Updated: 2025/02/26 13:30:18 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ LIBFT		=	$(LIBFT_PATH)/libft.a
 
 INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes
 
-FILES		= 	converter \
+FILES		= 	chunk_sort_utils \
+				chunk_sort \
+				converter \
 				converter_utils \
 				display \
 				error_handler \
@@ -36,8 +38,10 @@ FILES		= 	converter \
 				push_swap_utils \
 				push_swap \
 				push \
+				rapid_sort \
 				reverse_rotate \
 				rotate \
+				smarter_sort \
 				sort \
 				stacks_functions \
 				stacks_functions2 \
