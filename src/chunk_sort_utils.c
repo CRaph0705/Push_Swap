@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:35:49 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/27 13:22:41 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:10:53 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 long	get_chunk_min_target(t_stack **stack, long chunk_size);
 long	get_chunk_max_target(t_stack **stack, long chunk_size);
 t_stack	*get_target_pos_median(t_stack **stack, long chunk_size);
+void	fill_chunk(t_stack **stack_a, t_stack **stack_b);
+void		pushback_chunks(t_stack **stack_a, t_stack **stack_b);
+t_stack	*get_next_node(t_stack **stack, t_stack *limit);
+t_stack	*get_stack_max_target_node(t_stack **stack);
 
 t_stack	*get_target_pos_median(t_stack **stack, long chunk_size)
 {
@@ -115,7 +119,6 @@ void	epure_a_over_median(t_stack **stack_a, t_stack **stack_b, t_stack *pivot_a)
 //fill chunk in dest stack (stack b) with node from src stack (stack a) until node *limit excluded
 void	fill_chunk(t_stack **stack_a, t_stack **stack_b)
 {
-	// long	max;
 	t_stack	*next_node;
 	t_stack *limit;
 	long	max_target;
@@ -127,14 +130,15 @@ void	fill_chunk(t_stack **stack_a, t_stack **stack_b)
 	// max = get_chunk_max_target(stack_a, ft_stacksize(*stack_a));
 	// rotate next closest node in target chunk
 	max_target = ft_stacksize(*stack_a) - 1;
-	while (*stack_a != NULL)
+	n = 8;
+	while (*stack_a != NULL && n > 0)
 	{
-		n = 8;
+		// ft_printf("n = %i\n", n);
 		limit = get_node_by_target_pos(stack_a, (max_target / n));
 		next_node = get_next_node(stack_a, limit);
-		while (next_node != NULL)
+		while (next_node != limit)
 		{
-			while (stack_a != next_node)
+			while (*stack_a != next_node)
 				{
 					if (next_node->index <= (ft_stacksize(*stack_a) / 2))
 						ra(stack_a);
@@ -145,9 +149,12 @@ void	fill_chunk(t_stack **stack_a, t_stack **stack_b)
 			next_node = get_next_node(stack_a, limit);
 		}
 		n--;
+		// if (n == 0)
+		// 	break ;
+		// ft_printf("n--\n");
 	}
 }
-/* return first next node that goes in chunk */
+/* return first next node below limit or limit if none found */
 t_stack	*get_next_node(t_stack **stack, t_stack *limit)
 {
 	t_stack	*first_node;
@@ -155,13 +162,13 @@ t_stack	*get_next_node(t_stack **stack, t_stack *limit)
 	t_stack	*cursor;
 
 	if (!stack || !(*stack) || !limit)
-		return ;
+		return (NULL);
 	cursor = (*stack);
 	first_node = NULL;
 	last_node = NULL;
 	while (cursor != NULL)
 	{
-		if(cursor->target_pos <= limit->target_pos)
+		if(cursor->target_pos < limit->target_pos)
 		{
 			if (first_node == NULL) 
 				first_node = cursor;
@@ -169,7 +176,52 @@ t_stack	*get_next_node(t_stack **stack, t_stack *limit)
 		}
 		cursor = cursor->next;
 	}
+	if (first_node == NULL)
+		return (limit);
 	if (ft_stacksize(*stack) - last_node->index < first_node->index)
 		return (last_node);
 	return(first_node);
+}
+void		pushback_chunks(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*target_node;
+
+	while ((*stack_b) != NULL)
+	{
+		target_node = get_stack_max_target_node(stack_b);
+		if (target_node == NULL)
+		{
+			ft_printf("Error");
+			return ;
+		}
+		while ((*stack_b) != target_node)
+		{
+			if (target_node->index <= (ft_stacksize(*stack_b) / 2))
+				rb(stack_b);
+			else
+				rrb(stack_b);
+		}
+		pa(stack_b, stack_a);
+	}
+	return ;
+}
+
+t_stack	*get_stack_max_target_node(t_stack **stack)
+{
+	t_stack	*cursor;
+	t_stack	*max_target;
+
+	if (!stack || !(*stack))
+		return (ft_printf("!stack || !(*stack)"), NULL);
+	cursor = (*stack);
+	max_target = cursor;
+	while (cursor != NULL)
+	{
+		if (cursor->target_pos > max_target->target_pos)
+		{
+			max_target = cursor;
+		}
+		cursor = cursor->next;
+	}
+	return (max_target);
 }
