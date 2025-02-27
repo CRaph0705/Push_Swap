@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:06 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/26 13:24:08 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:04:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ a, the smallest number being at the top. */
 void	push_swap(t_stack **stack_a, t_stack **stack_b)
 {
 	// insertion_sort(stack_a, stack_b);
+	// insertion_sort(stack_a, stack_b);
+	// smarter_sort(stack_a, stack_b);
+	// if stack a size <= 5 do tiny_sort else do chunk sort
 	chunk_sort(stack_a, stack_b);
 	return ;
 }

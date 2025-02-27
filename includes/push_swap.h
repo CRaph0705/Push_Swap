@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/26 16:17:48 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:42:45 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,14 +140,14 @@ t_stack			*get_node_by_target_pos(t_stack **stack, long target_pos);
 t_stack			*get_node_by_index(t_stack **stack, long index);
 t_stack			*get_node_by_value(t_stack **stack, int value);
 
-/* RAPID SORT */
-void			chunk_sort(t_stack **stack_a, t_stack **stack_b);
-
 /* RAPID SORT UTILS */
 
 t_stack			*get_target_pos_median(t_stack **stack, long chunk_size);
 void			epure_a_over_median(t_stack **stack_a, t_stack **stack_b, t_stack *pivot_a);
 
-/* MOVE COST */
+/* CHUNK SORT */
+void			chunk_sort(t_stack **stack_a, t_stack **stack_b);
+void			fill_chunk(t_stack **stack_a, t_stack **stack_b);
+void			pushback_chunks(t_stack **stack_a, t_stack **stack_b);
 
 #endif
