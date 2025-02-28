@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:35:49 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/27 14:10:53 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/28 01:47:07 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,21 +120,27 @@ void	epure_a_over_median(t_stack **stack_a, t_stack **stack_b, t_stack *pivot_a)
 void	fill_chunk(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*next_node;
-	t_stack *limit;
+	t_stack	*limit;
 	long	max_target;
 	long	n;
+	t_stack *median; // genre : median = get_chunk_median(*stack, limit);
+	//TODO ^^^^^^^^^^
 	if (!stack_a || !(*stack_a))
 		return ;
-	//6 chunks -> n chunks, n--;
-	// target_max / 6
+	//n chunks -> n chunks, n--;
+	// target_max * i / n ??
 	// max = get_chunk_max_target(stack_a, ft_stacksize(*stack_a));
 	// rotate next closest node in target chunk
 	max_target = ft_stacksize(*stack_a) - 1;
-	n = 8;
-	while (*stack_a != NULL && n > 0)
+	n = 1;
+	while (*stack_a != NULL && n < 5)
 	{
 		// ft_printf("n = %i\n", n);
-		limit = get_node_by_target_pos(stack_a, (max_target / n));
+		limit = get_node_by_target_pos(stack_a, (max_target / 4) * n);
+
+		// median = (get min target pos + get limit target pos) / 2 //TODO
+
+		// ft_printf("limit target pos : %i\n",limit->target_pos);
 		next_node = get_next_node(stack_a, limit);
 		while (next_node != limit)
 		{
@@ -145,14 +151,20 @@ void	fill_chunk(t_stack **stack_a, t_stack **stack_b)
 					else
 						rra(stack_a);
 				}
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b);//TODO ajouter à la suite ici logique SI > chunk mediane rotate sinon laisser en haut
+				// un truc du genre :
+			/* 			if ((*stack_b)->target_pos < median->target_pos)
+				rb(stack_b); */
+
 			next_node = get_next_node(stack_a, limit);
 		}
-		n--;
+		n++;
 		// if (n == 0)
 		// 	break ;
 		// ft_printf("n--\n");
 	}
+	while (*stack_a != NULL)
+		pb(stack_a, stack_b);
 }
 /* return first next node below limit or limit if none found */
 t_stack	*get_next_node(t_stack **stack, t_stack *limit)
