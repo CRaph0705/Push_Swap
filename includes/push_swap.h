@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/27 13:42:45 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:07:04 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,14 +140,16 @@ t_stack			*get_node_by_target_pos(t_stack **stack, long target_pos);
 t_stack			*get_node_by_index(t_stack **stack, long index);
 t_stack			*get_node_by_value(t_stack **stack, int value);
 
-/* RAPID SORT UTILS */
-
-t_stack			*get_target_pos_median(t_stack **stack, long chunk_size);
-void			epure_a_over_median(t_stack **stack_a, t_stack **stack_b, t_stack *pivot_a);
-
 /* CHUNK SORT */
+void			sort_in_chunks(t_stack **stack_a, t_stack **stack_b);
 void			chunk_sort(t_stack **stack_a, t_stack **stack_b);
-void			fill_chunk(t_stack **stack_a, t_stack **stack_b);
+void			fill_chunk(t_stack **stack_a, t_stack *limit,
+					t_stack **stack_b);
 void			pushback_chunks(t_stack **stack_a, t_stack **stack_b);
+long			get_chunk_max_target(t_stack **stack, long chunk_size);
+t_stack			*get_next_node(t_stack **stack, t_stack *limit);
+t_stack			*get_stack_max_target_node(t_stack **stack);
+t_stack			*get_chunk_median(t_stack **stack, t_stack *chunk_limit);
+t_stack			*get_chunk_min_node(t_stack **stack, t_stack *chunk_limit);
 
 #endif

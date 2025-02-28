@@ -6,39 +6,65 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/27 14:28:32 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:02:55 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b);
+void	chunk_sort(t_stack **stack_a, t_stack **stack_b);
+
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	fill_chunk(stack_a, stack_b);
+	sort_in_chunks(stack_a, stack_b);
 	pushback_chunks(stack_a, stack_b);
-	
-/* 	ft_putstr("stack a\n");
-	display_stack(stack_a, 1);
-	ft_putstr("stack b\n");
-	display_stack(stack_b, 1); */
-} 
+}
 
-// mediane ou point pivot
-// chunk 1 -> target pos entre 0 et index max / 4
-// chunk 2 -> target pos entre index max / 4 et index max / 2
-// chunk 3 -> target pos entre index max / 2 et 3 index max / 4
-// chunk 4 -> target pos entre 3 index max / 4 et index max
+void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*limit;
+	long	max_target;
+	long	n;
 
-// int i : index de chunk
-// fixer une condition d'entrée dans le chunk en fonction de la target pos
-// genre if (*stack -> target_pos) < index_max / index chunk
+	if (!stack_a || !(*stack_a))
+		return ;
+	max_target = ft_stacksize(*stack_a) - 1;
+	n = 1;
+	while (*stack_a != NULL && n < 5)
+	{
+		limit = get_node_by_target_pos(stack_a, (max_target / 4) * n);
+		fill_chunk(stack_a, limit, stack_b);
+		n++;
+	}
+	while (*stack_a != NULL)
+		pb(stack_a, stack_b);
+}
 
-// limit_chunk1 == ptr sur node dont target_pos == 0
-// limit_chunk2 == ptr sur node dont target_pos == max_target_pos * 1/3
-// limit_chunk3 == ptr sur node dont target_pos == max_target_pos * 2/3
+void	bring_node_on_top_of_a(t_stack **stack_a, t_stack *node)
+{
+	while (*stack_a != node)
+	{
+		if (node->index <= (ft_stacksize(*stack_a) / 2))
+			ra(stack_a);
+		else
+			rra(stack_a);
+	}
+}
 
-/*//TODO >>>>>>>>>> fill chunk functions <<<<<<<<<< */
-// while stack a != NULL 
-//get_next_chunk(stack, chunk_limit);
-// -> while (*stack)->target_pos < chunk_limit->target_pos
-//get_next_chunk_node
+void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b)
+{
+	t_stack	*next_node;
+	t_stack	*median;
+
+	median = get_chunk_median(stack_a, limit);
+	next_node = get_next_node(stack_a, limit);
+	while (next_node != limit)
+	{
+		bring_node_on_top_of_a(stack_a, next_node);
+		pb(stack_a, stack_b);
+		if ((*stack_b)->target_pos < median->target_pos)
+			rb(stack_b);
+		next_node = get_next_node(stack_a, limit);
+	}
+}
