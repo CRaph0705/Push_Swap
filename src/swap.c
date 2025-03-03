@@ -6,16 +6,18 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:05:38 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/19 12:34:49 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:00:09 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	swap(t_stack **stack);
-void	sa(t_stack **stack_a);
-void	sb(t_stack **stack_b);
-void	ss(t_stack **stack_a, t_stack **stack_b);
+void	sa(t_stack **stack_a, int do_print);
+void	sb(t_stack **stack_b, int do_print);
+void	ss(t_stack **stack_a, t_stack **stack_b, int do_print);
+
+//add if (do_print == 1)
 
 /* Swap the first 2 elements at the top of target stack. */
 void	swap(t_stack **stack)
@@ -32,29 +34,31 @@ void	swap(t_stack **stack)
 	next->next = current;
 	*stack = next;
 	update_indices(stack);
-	ft_putstr(">>>swap\n");
 }
 
 /* sa (swap a): Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one or no elements. */
-void	sa(t_stack **stack_a)
+void	sa(t_stack **stack_a, int do_print)
 {
 	swap(stack_a);
-	ft_putstr("sa\n");
+	if (do_print == 1)
+		ft_putstr("sa\n");
 }
 
 /* sb (swap b): Swap the first 2 elements at the top of stack b.
 Do nothing if there is only one or no elements. */
-void	sb(t_stack **stack_b)
+void	sb(t_stack **stack_b, int do_print)
 {
 	swap(stack_b);
-	ft_putstr("sb\n");
+	if (do_print == 1)
+		ft_putstr("sb\n");
 }
 
 /* ss : sa and sb at the same time. */
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, int do_print)
 {
 	swap(stack_a);
 	swap(stack_b);
-	ft_putstr("ss\n");
+	if (do_print == 1)
+		ft_putstr("ss\n");
 }

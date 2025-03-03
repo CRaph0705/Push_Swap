@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:35:49 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/28 19:30:32 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/03 18:27:56 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ long	get_chunk_max_target(t_stack **stack, long chunk_size)
 	long	i;
 
 	if (!stack || !(*stack) || !chunk_size)
-		return (ft_printf("!stack || !(*stack) || !chunk_size"), -1);
+		return (-1);
 	cursor = (*stack);
 	i = 0;
 	max_target = cursor->target_pos;
@@ -80,18 +80,15 @@ void	pushback_chunks(t_stack **stack_a, t_stack **stack_b)
 	{
 		target_node = get_stack_max_target_node(stack_b);
 		if (target_node == NULL)
-		{
-			ft_printf("Error");
 			return ;
-		}
 		while ((*stack_b) != target_node)
 		{
 			if (target_node->index <= (ft_stacksize(*stack_b) / 2))
-				rb(stack_b);
+				rb(stack_b, 1);
 			else
-				rrb(stack_b);
+				rrb(stack_b, 1);
 		}
-		pa(stack_b, stack_a);
+		pa(stack_b, stack_a, 1);
 	}
 	return ;
 }

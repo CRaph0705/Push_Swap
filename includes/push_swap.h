@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/28 19:07:04 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:29:42 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int				*format_arg(char **num_str_array);
 int				check_if_convertible(char **str_array);
 
 /* CONVERTER UTILS */
+
 int				check_if_convertible(char **str_array);
 int				is_num(char *str);
 int				ft_is_atoiable(char	*num_ptr);
@@ -63,9 +64,7 @@ int				ft_all_atoiable(char **array);
 /* error handling */
 
 int				check_arg_valid(int ac, char **av);
-void			freetout(void);
 void			error_handler(void);
-int				check_stack_errors(t_stack ***stacks);
 int				check_dupes(int *tab, size_t len);
 
 /* UTILS */
@@ -102,29 +101,29 @@ void			display_node(t_stack *node, int fd);
 /* SWAP */
 
 void			swap(t_stack **stack);
-void			sa(t_stack **stack_a);
-void			sb(t_stack **stack_b);
-void			ss(t_stack **stack_a, t_stack **stack_b);
+void			sa(t_stack **stack_a, int do_print);
+void			sb(t_stack **stack_b, int do_print);
+void			ss(t_stack **stack_a, t_stack **stack_b, int do_print);
 
 /* PUSH */
 
 void			push(t_stack **src, t_stack **dest);
-void			pa(t_stack **stack_b, t_stack **stack_a);
-void			pb(t_stack **stack_a, t_stack **stack_b);
+void			pa(t_stack **stack_b, t_stack **stack_a, int do_print);
+void			pb(t_stack **stack_a, t_stack **stack_b, int do_print);
 
 /* ROTATE */
 
 void			r(t_stack **stack);
-void			ra(t_stack **stack_a);
-void			rb(t_stack **stack_b);
-void			rr(t_stack **stack_a, t_stack **stack_b);
+void			ra(t_stack **stack_a, int do_print);
+void			rb(t_stack **stack_b, int do_print);
+void			rr(t_stack **stack_a, t_stack **stack_b, int do_print);
 
 /* REVERSE ROTATE */
 
 void			r_r(t_stack	**stack);
-void			rra(t_stack **stack_a);
-void			rrb(t_stack **stack_b);
-void			rrr(t_stack **stack_a, t_stack **stack_b);
+void			rra(t_stack **stack_a, int do_print);
+void			rrb(t_stack **stack_b, int do_print);
+void			rrr(t_stack **stack_a, t_stack **stack_b, int do_print);
 
 /* SORT FUNCTIONS */
 
@@ -132,7 +131,9 @@ void			insertion_sort(t_stack **stack_a, t_stack **stack_b);
 void			smarter_sort(t_stack **stack_a, t_stack **stack_b);
 
 /* SORT UTILS */
+
 long			get_stack_min_target(t_stack **stack);
+long			get_stack_max_target(t_stack **stack);
 
 /* GET NODE BY */
 
@@ -141,6 +142,7 @@ t_stack			*get_node_by_index(t_stack **stack, long index);
 t_stack			*get_node_by_value(t_stack **stack, int value);
 
 /* CHUNK SORT */
+
 void			sort_in_chunks(t_stack **stack_a, t_stack **stack_b);
 void			chunk_sort(t_stack **stack_a, t_stack **stack_b);
 void			fill_chunk(t_stack **stack_a, t_stack *limit,
@@ -151,5 +153,12 @@ t_stack			*get_next_node(t_stack **stack, t_stack *limit);
 t_stack			*get_stack_max_target_node(t_stack **stack);
 t_stack			*get_chunk_median(t_stack **stack, t_stack *chunk_limit);
 t_stack			*get_chunk_min_node(t_stack **stack, t_stack *chunk_limit);
+
+int				is_sorted(t_stack **stack);
+int				is_asc_sorted(t_stack **stack);
+int				is_desc_sorted(t_stack **stack);
+
+void			sort_short(t_stack **stack_a, t_stack **stack_b);
+void			bring_node_on_top_of_a(t_stack **stack_a, t_stack *node);
 
 #endif

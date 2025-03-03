@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/02/26 13:30:18 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/03 17:59:31 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC			= 	cc
 CFLAGS		= 	-Wall -Werror -Wextra
 AR			=	ar -rcs
 NAME		= 	push_swap
+BNAME		=	checker
 
 LIBFT_PATH	=	./libft
 LIBFT		=	$(LIBFT_PATH)/libft.a
@@ -28,7 +29,6 @@ FILES		= 	chunk_sort_utils \
 				converter_utils \
 				display \
 				error_handler \
-				exit \
 				get_node_by \
 				init \
 				insertion_sort_utils \
@@ -38,16 +38,17 @@ FILES		= 	chunk_sort_utils \
 				push_swap_utils \
 				push_swap \
 				push \
-				rapid_sort \
 				reverse_rotate \
 				rotate \
 				smarter_sort \
+				sort_short \
 				sort \
 				stacks_functions \
 				stacks_functions2 \
 				stacks_utils \
 				swap \
-				target_position
+				target_position \
+				utils
 
 SRC_FILES	=	$(addsuffix .c, $(FILES))
 OBJ_DIR		= obj/
@@ -83,3 +84,7 @@ $(OBJ_DIR) :
 debug : $(LIBFT) $(OBJ_DIR) $(OBJ)
 	$(CC) -g $(CFLAGS) $(OBJ) -L$(LIBFT_PATH) -lft -o $(NAME)
 
+checker: $(OBJ) $(OBJB)
+	$(CC) $(CFLAGS) $(OBJ) $(OBJB) -L$(LIBFT_PATH) -lft -o checker
+
+bonus: $(NAME) checker

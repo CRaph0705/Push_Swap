@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/28 19:02:55 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:24:47 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	chunk_sort(t_stack **stack_a, t_stack **stack_b);
 
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b)
 {
+	if (is_sorted(stack_a))
+		return ;
 	sort_in_chunks(stack_a, stack_b);
 	pushback_chunks(stack_a, stack_b);
 }
@@ -26,19 +28,24 @@ void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*limit;
 	long	max_target;
 	long	n;
+	long	nb_div;
 
 	if (!stack_a || !(*stack_a))
 		return ;
 	max_target = ft_stacksize(*stack_a) - 1;
+	if (ft_stacksize(*stack_a) > 100)
+		nb_div = 9;
+	else
+		nb_div = 3;
 	n = 1;
-	while (*stack_a != NULL && n < 5)
+	while (*stack_a != NULL && n <= nb_div)
 	{
-		limit = get_node_by_target_pos(stack_a, (max_target / 4) * n);
+		limit = get_node_by_target_pos(stack_a, (max_target / nb_div) * n);
 		fill_chunk(stack_a, limit, stack_b);
 		n++;
 	}
 	while (*stack_a != NULL)
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 1);
 }
 
 void	bring_node_on_top_of_a(t_stack **stack_a, t_stack *node)
@@ -46,9 +53,9 @@ void	bring_node_on_top_of_a(t_stack **stack_a, t_stack *node)
 	while (*stack_a != node)
 	{
 		if (node->index <= (ft_stacksize(*stack_a) / 2))
-			ra(stack_a);
+			ra(stack_a, 1);
 		else
-			rra(stack_a);
+			rra(stack_a, 1);
 	}
 }
 
@@ -62,9 +69,9 @@ void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b)
 	while (next_node != limit)
 	{
 		bring_node_on_top_of_a(stack_a, next_node);
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 1);
 		if ((*stack_b)->target_pos < median->target_pos)
-			rb(stack_b);
+			rb(stack_b, 1);
 		next_node = get_next_node(stack_a, limit);
 	}
 }
