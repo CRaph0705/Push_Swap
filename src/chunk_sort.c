@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 19:24:47 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:38:47 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
 	if (ft_stacksize(*stack_a) > 100)
 		nb_div = 9;
 	else
-		nb_div = 3;
+		nb_div = 5;
 	n = 1;
 	while (*stack_a != NULL && n <= nb_div)
 	{
@@ -48,14 +48,24 @@ void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
 		pb(stack_a, stack_b, 1);
 }
 
-void	bring_node_on_top_of_a(t_stack **stack_a, t_stack *node)
+void	bring_node_on_top(t_stack **stack, t_stack *node, char c)
 {
-	while (*stack_a != node)
+	while (*stack != node)
 	{
-		if (node->index <= (ft_stacksize(*stack_a) / 2))
-			ra(stack_a, 1);
+		if (c == 'a')
+		{
+			if (node->index <= (ft_stacksize(*stack) / 2))
+				ra(stack, 1);
+			else
+				rra(stack, 1);
+		}
 		else
-			rra(stack_a, 1);
+		{
+			if (node->index <= (ft_stacksize(*stack) / 2))
+				rb(stack, 1);
+			else
+				rrb(stack, 1);
+		}
 	}
 }
 
@@ -68,7 +78,7 @@ void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b)
 	next_node = get_next_node(stack_a, limit);
 	while (next_node != limit)
 	{
-		bring_node_on_top_of_a(stack_a, next_node);
+		bring_node_on_top(stack_a, next_node, 'a');
 		pb(stack_a, stack_b, 1);
 		if ((*stack_b)->target_pos < median->target_pos)
 			rb(stack_b, 1);
