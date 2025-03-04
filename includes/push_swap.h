@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 22:38:27 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:05:21 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,7 @@ int				is_desc_sorted(t_stack **stack);
 
 void			sort_short(t_stack **stack_a, t_stack **stack_b);
 void			bring_node_on_top(t_stack **stack, t_stack *node, char c);
+t_stack			*get_closest_node(t_stack **stack,
+					t_stack *node_a, t_stack *node_b);
 
 #endif

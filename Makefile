@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/03 17:59:31 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/04 15:06:28 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ FILES		= 	chunk_sort_utils \
 				display \
 				error_handler \
 				get_node_by \
+				get_node \
 				init \
 				insertion_sort_utils \
 				insertion_sort \

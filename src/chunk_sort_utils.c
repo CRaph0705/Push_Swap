@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:35:49 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 23:06:34 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:14:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ void	pushback_chunks(t_stack **stack_a, t_stack **stack_b)
 			return ;
 		if ((*stack_b)->next != NULL)
 			scnd_max = get_node_by_target_pos(stack_b, max->target_pos - 1);
-
-		if ()// gap function to calculate the closest node from an edge
+		if (get_closest_node(stack_b, max, scnd_max) == max)
 			bring_node_on_top(stack_b, max, 'b');
 		else
 		{
