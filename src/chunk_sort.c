@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 22:38:47 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:52:17 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	bring_node_on_top(t_stack **stack, t_stack *node, char c)
 		else
 		{
 			if (node->index <= (ft_stacksize(*stack) / 2))
-				rb(stack, 1);
+				rb(stack, 1);//check if rr or rb
 			else
-				rrb(stack, 1);
+				rrb(stack, 1);//check if rrr or rrb
 		}
 	}
 }
