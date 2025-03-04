@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:41:02 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 17:31:12 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:07:59 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 
 void	do_instruction(char *instruction, t_stack **stack_a, t_stack **stack_b);
 void	check(t_stack **stack_a, t_stack **stack_b);
-
-// takes stack
-// read prompt
-// check stack
-// assert error if stack not valid
-// gnl list command
-// parse
-// foreach exec
-// check if is sorted
-// retval
 
 void	do_instruction(char *instruction, t_stack **stack_a, t_stack **stack_b)
 {
@@ -49,7 +39,7 @@ void	do_instruction(char *instruction, t_stack **stack_a, t_stack **stack_b)
 		rrb(stack_b, 0);
 	else if (!ft_strncmp(instruction, "rrr\n", 4))
 		rrr(stack_a, stack_b, 0);
-	else
+	else if (!ft_strncmp(instruction, "\n", 1))
 		free(instruction);
 }
 
@@ -61,11 +51,12 @@ void	check(t_stack **stack_a, t_stack **stack_b)
 	while (instruction)
 	{
 		do_instruction(instruction, stack_a, stack_b);
+		if (!instruction)
+			break ;
 		free(instruction);
 		instruction = get_next_line(0);
 	}
-	free(instruction);
-	if (is_sorted(stack_a) && (*stack_b) == NULL)
+	if (is_sorted(stack_a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

@@ -6,17 +6,18 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:35:49 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 16:22:21 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:21:48 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 long	get_chunk_max_target(t_stack **stack, long chunk_size);
-void	pushback_chunks(t_stack **stack_a, t_stack **stack_b);
 t_stack	*get_next_node(t_stack **stack, t_stack *limit);
 t_stack	*get_chunk_median(t_stack **stack, t_stack *chunk_limit);
 t_stack	*get_chunk_min_node(t_stack **stack, t_stack *chunk_limit);
+void	bring_two_nodes_and_reorder(t_stack **stack_a, t_stack **stack_b,
+			t_stack *node_a, t_stack *node_b);
 
 /* returns max target_position of **stack */
 long	get_chunk_max_target(t_stack **stack, long chunk_size)
@@ -71,37 +72,18 @@ t_stack	*get_next_node(t_stack **stack, t_stack *limit)
 	return (first_node);
 }
 
-/* reinsert stack b chunks in stack a by desc order */
-void	pushback_chunks(t_stack **stack_a, t_stack **stack_b)
+void	bring_two_nodes_and_reorder(t_stack **stack_a, t_stack **stack_b,
+	t_stack *node_a, t_stack *node_b)
 {
-	t_stack	*max;
-	t_stack	*scnd_max;
-
-	if (!stack_b || !(*stack_b))
-		return ;
-	while ((*stack_b) != NULL)
-	{
-		max = get_stack_max_target_node(stack_b);
-		if ((*stack_b)->next != NULL)
-			scnd_max = get_node_by_target_pos(stack_b, max->target_pos - 1);
-		if (max == get_closest_node(stack_b, max, scnd_max))
-		{
-			bring_node_on_top(stack_b, max, 'b');
-			pa(stack_b, stack_a, 1);
-		}
-		else
-		{
-			bring_node_on_top(stack_b, scnd_max, 'b');
-			pa(stack_b, stack_a, 1);
-			if (max->index <= (ft_stacksize(*stack_b) / 2))
-				rr(stack_a, stack_b, 1);
-			else
-				ra(stack_a, 1);
-			bring_node_on_top(stack_b, max, 'b');
-			pa(stack_b, stack_a, 1);
-			rra(stack_a, 1);
-		}
-	}
+	bring_node_on_top(stack_b, node_a, 'b');
+	pa(stack_b, stack_a, 1);
+	if (node_b->index <= (ft_stacksize(*stack_b) / 2))
+		rr(stack_a, stack_b, 1);
+	else
+		ra(stack_a, 1);
+	bring_node_on_top(stack_b, node_b, 'b');
+	pa(stack_b, stack_a, 1);
+	rra(stack_a, 1);
 }
 
 /* return median node in current chunk */

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 15:52:17 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:44:13 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b);
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b);
+void	pushback_chunks(t_stack **stack_a, t_stack **stack_b);
 
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b)
 {
@@ -34,9 +35,9 @@ void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	max_target = ft_stacksize(*stack_a) - 1;
 	if (ft_stacksize(*stack_a) > 100)
-		nb_div = 9;
+		nb_div = 8;
 	else
-		nb_div = 5;
+		nb_div = 4;
 	n = 1;
 	while (*stack_a != NULL && n <= nb_div)
 	{
@@ -50,6 +51,8 @@ void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
 
 void	bring_node_on_top(t_stack **stack, t_stack *node, char c)
 {
+	if (!stack || !(*stack) ||!node)
+		return ;
 	while (*stack != node)
 	{
 		if (c == 'a')
@@ -59,13 +62,15 @@ void	bring_node_on_top(t_stack **stack, t_stack *node, char c)
 			else
 				rra(stack, 1);
 		}
-		else
+		else if (c == 'b')
 		{
 			if (node->index <= (ft_stacksize(*stack) / 2))
-				rb(stack, 1);//check if rr or rb
+				rb(stack, 1);
 			else
-				rrb(stack, 1);//check if rrr or rrb
+				rrb(stack, 1);
 		}
+		else
+			return ;
 	}
 }
 
@@ -83,5 +88,27 @@ void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b)
 		if ((*stack_b)->target_pos < median->target_pos)
 			rb(stack_b, 1);
 		next_node = get_next_node(stack_a, limit);
+	}
+}
+
+/* reinsert stack b chunks in stack a by desc order */
+void	pushback_chunks(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*max;
+	t_stack	*scnd_max;
+
+	if (!stack_b || !(*stack_b))
+		return ;
+	while ((*stack_b) != NULL)
+	{
+		max = get_stack_max_target_node(stack_b);
+		scnd_max = get_node_by_target_pos(stack_b, max->target_pos - 1);
+		if (max == get_closest_node(stack_b, max, scnd_max) || !scnd_max)
+		{
+			bring_node_on_top(stack_b, max, 'b');
+			pa(stack_b, stack_a, 1);
+		}
+		else
+			bring_two_nodes_and_reorder(stack_a, stack_b, scnd_max, max);
 	}
 }

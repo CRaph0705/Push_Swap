@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:29:58 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 17:31:05 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 20:09:11 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (ac < 2)
 		return (0);
-	stack_b = malloc(sizeof(t_stack));
+	stack_b = malloc(sizeof(t_stack *));
 	if (!stack_b)
-		return (error_handler(), 0);
+		return (0);
 	stack_a = init_program(ac, av);
 	if (!stack_a)
 		return (0);
