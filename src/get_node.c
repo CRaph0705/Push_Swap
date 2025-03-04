@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:46:13 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 15:32:19 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:21:35 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ t_stack	*get_closest_node(t_stack **stack, t_stack *node_a, t_stack *node_b)
 	t_stack	*max;
 	long	len;
 
-	if (!stack || !(*stack))
+	if (!stack || !(*stack) || !node_a || !node_b)
 		return (NULL);
-	if (!node_a)
-		return (node_b);
-	if (!node_b)
-		return (node_a);
 	len = ft_stacksize(*stack);
 	if (node_a->index < node_b->index)
 	{

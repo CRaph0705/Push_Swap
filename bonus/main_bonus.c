@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 12:41:18 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 17:29:41 by rcochran         ###   ########.fr       */
+/*   Created: 2025/03/04 17:29:58 by rcochran          #+#    #+#             */
+/*   Updated: 2025/03/04 17:31:05 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	main(int ac, char **av)
 {
@@ -25,10 +25,9 @@ int	main(int ac, char **av)
 		return (error_handler(), 0);
 	stack_a = init_program(ac, av);
 	if (!stack_a)
-		return (error_handler(), 0);
-	push_swap(stack_a, stack_b);
+		return (0);
+	check(stack_a, stack_b);
 	ft_stackclear(stack_a);
 	ft_stackclear(stack_b);
 	return (0);
 }
-//	./push_swap 11 2 0 111 34234 toto "123 1234 4321 321" "0101 1010 1243432"

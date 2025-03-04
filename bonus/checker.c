@@ -6,11 +6,11 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:41:02 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 17:03:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:31:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	do_instruction(char *instruction, t_stack **stack_a, t_stack **stack_b);
 void	check(t_stack **stack_a, t_stack **stack_b);
@@ -69,24 +69,4 @@ void	check(t_stack **stack_a, t_stack **stack_b)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-}
-
-int	main(int ac, char **av)
-{
-	t_stack	**stack_a;
-	t_stack	**stack_b;
-
-	stack_b = NULL;
-	if (ac < 2)
-		return (0);
-	stack_b = malloc(sizeof(t_stack));
-	if (!stack_b)
-		return (error_handler(), 0);
-	stack_a = init_program(ac, av);
-	if (!stack_a)
-		return (0);
-	check(&stack_a, &stack_b);
-	ft_stackclear(stack_a);
-	ft_stackclear(stack_b);
-	return (0);
 }

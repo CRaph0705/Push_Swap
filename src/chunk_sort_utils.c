@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:35:49 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 15:53:14 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:22:21 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	pushback_chunks(t_stack **stack_a, t_stack **stack_b)
 		max = get_stack_max_target_node(stack_b);
 		if ((*stack_b)->next != NULL)
 			scnd_max = get_node_by_target_pos(stack_b, max->target_pos - 1);
-		if (get_closest_node(stack_b, max, scnd_max) == max)
+		if (max == get_closest_node(stack_b, max, scnd_max))
 		{
 			bring_node_on_top(stack_b, max, 'b');
 			pa(stack_b, stack_a, 1);
@@ -93,7 +93,10 @@ void	pushback_chunks(t_stack **stack_a, t_stack **stack_b)
 		{
 			bring_node_on_top(stack_b, scnd_max, 'b');
 			pa(stack_b, stack_a, 1);
-			ra(stack_a, 1);
+			if (max->index <= (ft_stacksize(*stack_b) / 2))
+				rr(stack_a, stack_b, 1);
+			else
+				ra(stack_a, 1);
 			bring_node_on_top(stack_b, max, 'b');
 			pa(stack_b, stack_a, 1);
 			rra(stack_a, 1);
