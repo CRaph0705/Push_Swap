@@ -6,39 +6,109 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/27 14:28:32 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:44:13 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b);
+void	chunk_sort(t_stack **stack_a, t_stack **stack_b);
+void	pushback_chunks(t_stack **stack_a, t_stack **stack_b);
+
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	fill_chunk(stack_a, stack_b);
+	if (is_sorted(stack_a))
+		return ;
+	sort_in_chunks(stack_a, stack_b);
 	pushback_chunks(stack_a, stack_b);
-	
-/* 	ft_putstr("stack a\n");
-	display_stack(stack_a, 1);
-	ft_putstr("stack b\n");
-	display_stack(stack_b, 1); */
-} 
+}
 
-// mediane ou point pivot
-// chunk 1 -> target pos entre 0 et index max / 4
-// chunk 2 -> target pos entre index max / 4 et index max / 2
-// chunk 3 -> target pos entre index max / 2 et 3 index max / 4
-// chunk 4 -> target pos entre 3 index max / 4 et index max
+void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*limit;
+	long	max_target;
+	long	n;
+	long	nb_div;
 
-// int i : index de chunk
-// fixer une condition d'entrée dans le chunk en fonction de la target pos
-// genre if (*stack -> target_pos) < index_max / index chunk
+	if (!stack_a || !(*stack_a))
+		return ;
+	max_target = ft_stacksize(*stack_a) - 1;
+	if (ft_stacksize(*stack_a) > 100)
+		nb_div = 8;
+	else
+		nb_div = 4;
+	n = 1;
+	while (*stack_a != NULL && n <= nb_div)
+	{
+		limit = get_node_by_target_pos(stack_a, (max_target / nb_div) * n);
+		fill_chunk(stack_a, limit, stack_b);
+		n++;
+	}
+	while (*stack_a != NULL)
+		pb(stack_a, stack_b, 1);
+}
 
-// limit_chunk1 == ptr sur node dont target_pos == 0
-// limit_chunk2 == ptr sur node dont target_pos == max_target_pos * 1/3
-// limit_chunk3 == ptr sur node dont target_pos == max_target_pos * 2/3
+void	bring_node_on_top(t_stack **stack, t_stack *node, char c)
+{
+	if (!stack || !(*stack) ||!node)
+		return ;
+	while (*stack != node)
+	{
+		if (c == 'a')
+		{
+			if (node->index <= (ft_stacksize(*stack) / 2))
+				ra(stack, 1);
+			else
+				rra(stack, 1);
+		}
+		else if (c == 'b')
+		{
+			if (node->index <= (ft_stacksize(*stack) / 2))
+				rb(stack, 1);
+			else
+				rrb(stack, 1);
+		}
+		else
+			return ;
+	}
+}
 
-/*//TODO >>>>>>>>>> fill chunk functions <<<<<<<<<< */
-// while stack a != NULL 
-//get_next_chunk(stack, chunk_limit);
-// -> while (*stack)->target_pos < chunk_limit->target_pos
-//get_next_chunk_node
+void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b)
+{
+	t_stack	*next_node;
+	t_stack	*median;
+
+	median = get_chunk_median(stack_a, limit);
+	next_node = get_next_node(stack_a, limit);
+	while (next_node != limit)
+	{
+		bring_node_on_top(stack_a, next_node, 'a');
+		pb(stack_a, stack_b, 1);
+		if ((*stack_b)->target_pos < median->target_pos)
+			rb(stack_b, 1);
+		next_node = get_next_node(stack_a, limit);
+	}
+}
+
+/* reinsert stack b chunks in stack a by desc order */
+void	pushback_chunks(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*max;
+	t_stack	*scnd_max;
+
+	if (!stack_b || !(*stack_b))
+		return ;
+	while ((*stack_b) != NULL)
+	{
+		max = get_stack_max_target_node(stack_b);
+		scnd_max = get_node_by_target_pos(stack_b, max->target_pos - 1);
+		if (max == get_closest_node(stack_b, max, scnd_max) || !scnd_max)
+		{
+			bring_node_on_top(stack_b, max, 'b');
+			pa(stack_b, stack_a, 1);
+		}
+		else
+			bring_two_nodes_and_reorder(stack_a, stack_b, scnd_max, max);
+	}
+}

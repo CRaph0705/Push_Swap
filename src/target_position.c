@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:59:14 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/24 15:04:05 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:00:28 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	set_target_pos(t_stack *node, long pos);
 long	get_target_pos(t_stack *node);
 void	init_target_pos(t_stack **stack, int *array, size_t len);
+t_stack	*get_stack_max_target_node(t_stack **stack);
 
 long	get_num_index(int n, int *array, size_t size)
 {
@@ -32,7 +33,6 @@ long	get_num_index(int n, int *array, size_t size)
 	return (i);
 }
 
-//l.50 -> gérer error
 void	init_target_pos(t_stack **stack, int *array, size_t len)
 {
 	t_stack	*current;
@@ -67,4 +67,25 @@ long	get_target_pos(t_stack *node)
 	if (!node)
 		return (-1);
 	return (node->target_pos);
+}
+
+/* return node with max target_pos in stack */
+t_stack	*get_stack_max_target_node(t_stack **stack)
+{
+	t_stack	*cursor;
+	t_stack	*max_target;
+
+	if (!stack || !(*stack))
+		return (NULL);
+	cursor = (*stack);
+	max_target = cursor;
+	while (cursor != NULL)
+	{
+		if (cursor->target_pos > max_target->target_pos)
+		{
+			max_target = cursor;
+		}
+		cursor = cursor->next;
+	}
+	return (max_target);
 }
