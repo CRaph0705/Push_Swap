@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 21:22:26 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 22:59:03 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_stack			*ft_stacklast(t_stack **stack);
 
 /* stack init */
 
+long			get_num_index(int n, int *array, size_t size);
 void			update_indices(t_stack **stack);
 void			init_target_pos(t_stack **stack, int *array, size_t len);
 long			get_target_pos(t_stack *node);
@@ -159,7 +160,8 @@ int				is_asc_sorted(t_stack **stack);
 int				is_desc_sorted(t_stack **stack);
 
 void			sort_short(t_stack **stack_a, t_stack **stack_b);
-void			bring_node_on_top(t_stack **stack, t_stack *node, char c);
+void			bring_node_on_top(t_stack **stack, t_stack *node,
+					char stack_letter, int repeat);
 t_stack			*get_closest_node(t_stack **stack,
 					t_stack *node_a, t_stack *node_b);
 void			bring_two_nodes_and_reorder(t_stack **stack_a,

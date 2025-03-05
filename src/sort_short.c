@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 11:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 22:39:22 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:41:19 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 	if (is_sorted(stack_a))
 		return ;
 	max = get_stack_max_target_node(stack_a);
-	bring_node_on_top(stack_a, max, 'a');
+	bring_node_on_top(stack_a, max, 'a', 1);
 	pb(stack_a, stack_b, 1);
 	sort_three(stack_a);
 	pa(stack_b, stack_a, 1);
@@ -81,10 +81,10 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	med = get_node_by_target_pos(stack_a, 2);
 	next_node = get_next_node(stack_a, med);
-	bring_node_on_top(stack_a, next_node, 'a');
+	bring_node_on_top(stack_a, next_node, 'a', 1);
 	pb(stack_a, stack_b, 1);
 	next_node = get_next_node(stack_a, med);
-	bring_node_on_top(stack_a, next_node, 'a');
+	bring_node_on_top(stack_a, next_node, 'a', 1);
 	pb(stack_a, stack_b, 1);
 	if (is_asc_sorted(stack_a) == 0)
 		sort_three(stack_a);

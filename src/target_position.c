@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:59:14 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/05 12:01:50 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:54:47 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ long	get_target_pos(t_stack *node);
 void	init_target_pos(t_stack **stack, int *array, size_t len);
 t_stack	*get_stack_max_target_node(t_stack **stack);
 void	ft_sort_int_tab(int *tab, size_t size);
+long	get_num_index(int n, int *array, size_t size);
 
 long	get_num_index(int n, int *array, size_t size)
 {
