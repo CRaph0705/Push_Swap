@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:29:58 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 20:09:11 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 23:38:08 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int ac, char **av)
 	if (!stack_b)
 		return (0);
 	stack_a = init_program(ac, av);
-	if (!stack_a)
-		return (0);
+	if (!stack_a || !*stack_a)
+		return (error_handler(), 0);
 	check(stack_a, stack_b);
 	ft_stackclear(stack_a);
 	ft_stackclear(stack_b);

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:46 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 19:29:02 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 23:33:51 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,21 @@ int		check_arg_valid(int ac, char **av);
 
 int	check_arg_valid(int ac, char **av)
 {
+	int	i;
+
+	i = 0;
 	if (ac < 2)
 		return (0);
-	(void)av;
+	while (av[i])
+	{
+		if (ft_strlen(av[i]) == 0)
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
+/* Display Error */
 void	error_handler(void)
 {
 	ft_putstr_fd("Error\n", 2);
