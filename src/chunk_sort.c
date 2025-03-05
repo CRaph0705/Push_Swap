@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:23:55 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/05 19:53:51 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 22:59:34 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	sort_in_chunks(t_stack **stack_a, t_stack **stack_b)
 		pb(stack_a, stack_b, 1);
 }
 
-void	bring_node_on_top(t_stack **stack, t_stack *node, char stack_letter, int repeat)
+void	bring_node_on_top(t_stack **stack, t_stack *node,
+	char stack_letter, int repeat)
 {
 	if (!stack || !(*stack) ||!node)
 		return ;
@@ -90,4 +91,3 @@ void	fill_chunk(t_stack **stack_a, t_stack *limit, t_stack **stack_b)
 		next_node = get_next_node(stack_a, limit);
 	}
 }
-
