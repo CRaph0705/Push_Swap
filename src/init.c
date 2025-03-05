@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 13:58:56 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:02:07 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,26 @@ t_stack	**fill_stack(t_stack **stack, int *array, size_t len)
 		i++;
 	}
 	return (stack);
+}
+
+void	init_target_pos(t_stack **stack, int *array, size_t len)
+{
+	t_stack	*current;
+	long	pos;
+
+	if (!stack || !(*stack))
+		return ;
+	pos = -1;
+	current = (*stack);
+	ft_sort_int_tab(array, len);
+	while ((*stack) != NULL)
+	{
+		pos = get_num_index(current->value, array, len);
+		if (pos == -1)
+			return ;
+		set_target_pos(current, pos);
+		if (current->next == NULL)
+			return ;
+		current = current->next;
+	}
 }

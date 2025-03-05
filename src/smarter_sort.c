@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:16:22 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 17:43:20 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:58:25 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,6 @@
 
 void	smarter_sort(t_stack **stack_a, t_stack **stack_b);
 
-// int		is_sorted(t_stack **stack);
-
-/* ASC SORTED */
-/* DESC SORTED */
-
-// int	is_sorted(t_stack **stack)
-// {
-// 	if ( /* sorting logic here */)
-// 		return (1);
-// 	return (0);
-// }
-
-/*
-tant que stack a est non vide :
-	récupérer la min value de la current stack a.
-	rotate jusqu'à avoir min value de a en haut de la stack a
-	push min value de a dans b
-
-tant que stack b est non vide :
-	push b dans a
-
-instant parano : ultime verif de target position == index pour chaque node
-*/
 void	smarter_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	long	min_target;
