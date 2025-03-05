@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/04 17:48:36 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/05 20:00:44 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,14 +36,13 @@ FILES		= 	chunk_sort_utils \
 				insertion_sort_utils \
 				insertion_sort \
 				parse \
-				push_swap_utils \
 				push_swap \
 				push \
+				pushback \
 				reverse_rotate \
 				rotate \
 				smarter_sort \
 				sort_short \
-				sort \
 				stacks_functions \
 				stacks_functions2 \
 				stacks_utils \

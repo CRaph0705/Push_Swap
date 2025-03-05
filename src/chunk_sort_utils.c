@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:35:49 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/04 21:21:48 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:40:05 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,11 @@ t_stack	*get_next_node(t_stack **stack, t_stack *limit)
 void	bring_two_nodes_and_reorder(t_stack **stack_a, t_stack **stack_b,
 	t_stack *node_a, t_stack *node_b)
 {
-	bring_node_on_top(stack_b, node_a, 'b');
+	bring_node_on_top(stack_b, node_a, 'b', 1);
 	pa(stack_b, stack_a, 1);
-	if (node_b->index <= (ft_stacksize(*stack_b) / 2))
-		rr(stack_a, stack_b, 1);
-	else
-		ra(stack_a, 1);
-	bring_node_on_top(stack_b, node_b, 'b');
+	bring_node_on_top(stack_b, node_b, 'b', 1);
 	pa(stack_b, stack_a, 1);
-	rra(stack_a, 1);
+	sa(stack_a, 1);
 }
 
 /* return median node in current chunk */
