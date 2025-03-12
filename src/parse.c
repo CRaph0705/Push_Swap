@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/02/21 17:18:32 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:39:25 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 size_t				get_array_len(char **array);
 char				**merge_array(char **array, char **append);
 char				**parse(char **str_array, char c);
-static void			*cascade_free(char **array);
+void				*cascade_free(char **array);
+static void			*reverse_cascade_free(char **str, int i);
 
 char	**parse(char **str_array, char c)
 {
@@ -24,19 +25,31 @@ char	**parse(char **str_array, char c)
 	char	**split;
 
 	i = 0;
-	parsed_array = ft_calloc(1, sizeof(char *));
+	parsed_array = NULL;
 	while (str_array[i])
 	{
 		split = ft_split(str_array[i], c);
 		if (!split)
 			return (cascade_free(parsed_array), NULL);
 		parsed_array = merge_array(parsed_array, split);
+		free(split);
 		i++;
 	}
 	return (parsed_array);
 }
 
-static void	*cascade_free(char **array)
+static void	*reverse_cascade_free(char **str, int i)
+{
+	while (i >= 0)
+	{
+		free(str[i]);
+		i--;
+	}
+	free(str);
+	return (NULL);
+}
+
+void	*cascade_free(char **array)
 {
 	int	i;
 
@@ -57,7 +70,7 @@ size_t	get_array_len( char **array)
 	size_t	len;
 
 	len = 0;
-	while (array[len] != NULL)
+	while (array && array[len] != NULL)
 		len++;
 	return (len);
 }
@@ -76,7 +89,7 @@ char	**merge_array(char **array, char **append)
 	fusion = ft_calloc(len_fusion, sizeof(char *));
 	if (!fusion)
 		return (NULL);
-	while (array[i])
+	while (array && array[i])
 	{
 		fusion[i] = array[i];
 		i++;

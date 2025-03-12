@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:42:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/05 22:59:03 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:57:00 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int				*cascade_atoi(char **formated_array, size_t len);
 int				atoi_strict(char	*num_ptr);
 int				*format_arg(char **num_str_array);
 int				check_if_convertible(char **str_array);
+void			*cascade_free(char **array);
 
 /* CONVERTER UTILS */
 

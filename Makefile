@@ -6,14 +6,14 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/05 20:00:44 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/12 14:10:30 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re
 
 CC			= 	cc
-CFLAGS		= 	-Wall -Werror -Wextra
+CFLAGS		= 	#-Wall -Werror -Wextra
 AR			=	ar -rcs
 NAME		= 	push_swap
 BNAME		=	checker
@@ -48,7 +48,8 @@ FILES		= 	chunk_sort_utils \
 				stacks_utils \
 				swap \
 				target_position \
-				utils
+				utils \
+
 BFILES		=	checker
 
 MAIN		=	main.c
@@ -89,16 +90,18 @@ fclean : clean
 re : fclean all
 
 $(NAME) : $(LIBFT) $(OBJ_DIR) $(OBJ) $(OBJ_MAIN)
-	$(CC) $(CFLAGS) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -o $(NAME)
+	$(CC) -g3 $(CFLAGS) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -o $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+# mkdir -p $(dir $@)
+	$(CC) -g3 $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(BOBJ_DIR)%.o: $(SRC_BDIR)%.c
-	$(CC) $(CFLAGS) $(INCLUDES) $(BINCLUDES) -c $< -o $@
+# mkdir -p $(dir $@)
+	$(CC) -g3 $(CFLAGS) $(INCLUDES) $(BINCLUDES) -c $< -o $@
 
 $(OBJ_DIR) : 
 	mkdir -p $(OBJ_DIR)
@@ -106,8 +109,8 @@ $(OBJ_DIR) :
 $(BOBJ_DIR) : 
 	mkdir -p $(BOBJ_DIR)
 
-debug : $(LIBFT) $(OBJ_DIR) $(OBJ)
-	$(CC) -g $(CFLAGS) $(OBJ) -L$(LIBFT_PATH) -lft -o $(NAME)
+debug : $(LIBFT) $(OBJ_DIR) $(OBJ) Makefile
+	$(CC) -g3 $(CFLAGS) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -o $(NAME)
 
 checker: $(OBJ) $(BOBJ_DIR) $(BOBJ) $(OBJ_BMAIN)
 	$(CC) $(CFLAGS) $(OBJ) $(BOBJ) $(OBJ_BMAIN) -L$(LIBFT_PATH) -lft -o checker
@@ -115,4 +118,3 @@ checker: $(OBJ) $(BOBJ_DIR) $(BOBJ) $(OBJ_BMAIN)
 bonus: $(NAME) checker
 
 rebonus: fclean bonus
-

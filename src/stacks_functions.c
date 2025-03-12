@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:27:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 13:44:14 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:37:44 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_stackclear(t_stack **stack)
 {
 	t_stack	*tmp;
 
-	if (!stack || !(*stack))
+	if (!stack)
 		return ;
 	while (*stack != NULL)
 	{
@@ -78,7 +78,8 @@ void	ft_stackclear(t_stack **stack)
 		*stack = (*stack)->next;
 		ft_stackdelone(tmp);
 	}
-	*stack = NULL;
+	free(stack);
+	stack = NULL;
 }
 
 /* free target element */

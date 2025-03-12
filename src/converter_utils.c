@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:05:23 by rcochran          #+#    #+#             */
-/*   Updated: 2025/02/25 11:13:52 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/11 20:21:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,23 @@ int	check_if_convertible(char **str_array)
 int	is_num(char *str)
 {
 	int	i;
+	int	is_digit;
 
 	i = 0;
-	if (str[i + 1] && (str[i] == '-' || str[i] == '+'))
-		i++;
-	while (str[i] != '\0')
+	is_digit = 0;
+	if (str)
 	{
-		if (ft_isdigit(str[i]) == 0)
-			return (0);
-		i++;
+		if (str[i] && (str[i] == '-' || str[i] == '+'))
+			i++;
+		while (str[i] != '\0')
+		{
+			if (ft_isdigit(str[i]) == 0)
+				return (0);
+			is_digit = 1;
+			i++;
+		}
 	}
-	return (1);
+	return (is_digit);
 }
 
 int	ft_all_atoiable(char **array)
@@ -72,7 +78,7 @@ int	ft_is_atoiable(char	*num_ptr)
 	nbr = 0;
 	if (!num_ptr)
 		return (0);
-	if (*num_ptr == '-' && *num_ptr++)
+	if (*num_ptr == '-' && *(++num_ptr))
 		sign = -1;
 	while (*num_ptr)
 	{

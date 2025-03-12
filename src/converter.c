@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:12:24 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/03 14:02:52 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:26:35 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,22 @@ int	atoi_strict(char	*num_ptr)
 }
 
 //si retval == null fonction precedente doit free num str array
-int	*format_arg( char **av)
+int	*format_arg( char **parsed_arg)
 {
 	int			*formated_array;
-	char		**parsed_arg;
 	size_t		len;
 
-	parsed_arg = parse(av, ' ');
 	if (!parsed_arg)
 		return (NULL);
 	if (check_if_convertible(parsed_arg) == 0)
-		return (free(parsed_arg), NULL);
+		return (cascade_free(parsed_arg), NULL);
 	len = get_array_len(parsed_arg);
-	formated_array = ft_calloc(len + 1, sizeof(int));
-	if (!formated_array)
-		return (NULL);
 	formated_array = cascade_atoi(parsed_arg, len);
 	if (formated_array == NULL)
+	{
+		cascade_free(parsed_arg);
 		return (0);
+	}
+	cascade_free(parsed_arg);
 	return (formated_array);
 }
