@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:44 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/12 14:26:38 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:31:11 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_stack	**init_program(int ac, char **av)
 	size_t	len;
 	t_stack	**stack_a;
 	char	**parsed_arg;
+
 	stack_a = NULL;
 	stack_a = malloc(sizeof(t_stack *));
 	if (!stack_a)
@@ -33,14 +34,14 @@ t_stack	**init_program(int ac, char **av)
 	if (!check_arg_valid(ac, av))
 		return (ft_stackclear(stack_a), NULL);
 	av++;
-	ac--;
 	parsed_arg = parse(av, ' ');
 	len = get_array_len(parsed_arg);
 	formated_array = format_arg(parsed_arg);
 	if (!formated_array)
 		return (ft_stackclear(stack_a), NULL);
 	if (check_dupes(formated_array, len) == 1)
-		return (ft_stackclear(stack_a), cascade_free_int(formated_array, len), NULL);
+		return (ft_stackclear(stack_a),
+			cascade_free_int(formated_array, len), NULL);
 	stack_a = fill_stack(stack_a, formated_array, len);
 	init_target_pos(stack_a, formated_array, len);
 	cascade_free_int(formated_array, len);
@@ -54,7 +55,7 @@ void	cascade_free_int(int *array, int size)
 	i = 0;
 	while (i < size)
 	{
-		array[i] =0;
+		array[i] = 0;
 		i++;
 	}
 	free(array);
