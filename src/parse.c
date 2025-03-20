@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/03/20 18:48:23 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:57:11 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ char	**merge_array(char **array, char **append)
 		return (NULL);
 	while (array && array[i])
 	{
-		fusion[i] = array[i];
+		fusion[i] = ft_strdup(array[i]);
 		i++;
 	}
 	while (append[j])
 	{
-		fusion[i] = append[j];
+		fusion[i] = ft_strdup(append[j]);
 		i++;
 		j++;
 	}
