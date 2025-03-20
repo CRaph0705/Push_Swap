@@ -38,6 +38,8 @@ do
         check=$(echo "$result" | ./checker_Mac $ARG)
     else
         check=$(echo "$result" | ./checker_linux $ARG)
+        # check=$(echo "$result" | ./checker $ARG)
+
     fi
 
     if [ "$check" == "OK" ]; then
