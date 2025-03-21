@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:05:46 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/05 23:33:51 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/21 15:08:38 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,15 @@ int	check_dupes(int *tab, size_t len)
 {
 	size_t	i;
 	size_t	j;
-
 	if (len == 0)
 		return (0);
 	i = 0;
 	while (i < len)
 	{
 		j = i + 1;
-		while (i + j < len)
+		while (j < len)
 		{
-			if (tab[i] == tab[i + j])
+			if (tab[i] == tab[j])
 				return (1);
 			j++;
 		}
