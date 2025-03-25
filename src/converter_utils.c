@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:05:23 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/11 20:21:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:44:40 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	ft_is_atoiable(char	*num_ptr)
 	int		sign;
 	long	nbr;
 
+	if (ft_strlen(num_ptr) > 11)
+		return (0);
 	sign = 1;
 	nbr = 0;
 	if (!num_ptr)
