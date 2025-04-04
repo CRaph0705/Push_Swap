@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:41:02 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/25 17:42:55 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:33:44 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,20 @@ void	do_instruction(char *instruction, t_stack **stack_a, t_stack **stack_b)
 
 int	is_valid(char *instruction)
 {
-	if (!ft_strncmp(instruction, "sa\n", 3) || !ft_strncmp(instruction, "sb\n", 3))
+	if (!ft_strncmp(instruction, "sa\n", 3)
+		|| !ft_strncmp(instruction, "sb\n", 3))
 		return (1);
-	else if (!ft_strncmp(instruction, "ss\n", 3) || !ft_strncmp(instruction, "pb\n", 3))
+	else if (!ft_strncmp(instruction, "ss\n", 3)
+		|| !ft_strncmp(instruction, "pb\n", 3))
 		return (1);
-	else if (!ft_strncmp(instruction, "pa\n", 3) || !ft_strncmp(instruction, "ra\n", 3))
+	else if (!ft_strncmp(instruction, "pa\n", 3)
+		|| !ft_strncmp(instruction, "ra\n", 3))
 		return (1);
-	else if (!ft_strncmp(instruction, "rb\n", 3) || !ft_strncmp(instruction, "rr\n", 3))
+	else if (!ft_strncmp(instruction, "rb\n", 3)
+		|| !ft_strncmp(instruction, "rr\n", 3))
 		return (1);
-	else if (!ft_strncmp(instruction, "rra\n", 4) || !ft_strncmp(instruction, "rrb\n", 4))
+	else if (!ft_strncmp(instruction, "rra\n", 4)
+		|| !ft_strncmp(instruction, "rrb\n", 4))
 		return (1);
 	else if (!ft_strncmp(instruction, "rrr\n", 4))
 		return (1);

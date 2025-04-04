@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:03:44 by raphaelcoch       #+#    #+#             */
-/*   Updated: 2025/03/20 18:57:11 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:31:23 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t				get_array_len(char **array);
 char				**merge_array(char **array, char **append);
 char				**parse(char **str_array, char c);
 void				*cascade_free(char **array);
-static void			*reverse_cascade_free(char **str, int i);
+// static void			*reverse_cascade_free(char **str, int i);
 
 char	**parse(char **str_array, char c)
 {
@@ -37,7 +37,7 @@ char	**parse(char **str_array, char c)
 	return (parsed_array);
 }
 
-static void	*reverse_cascade_free(char **str, int i)
+/* static void	*reverse_cascade_free(char **str, int i)
 {
 	while (i >= 0)
 	{
@@ -46,7 +46,7 @@ static void	*reverse_cascade_free(char **str, int i)
 	}
 	free(str);
 	return (NULL);
-}
+} */
 
 void	*cascade_free(char **array)
 {

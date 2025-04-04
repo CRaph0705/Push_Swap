@@ -6,14 +6,14 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 12:47:30 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/12 14:10:30 by rcochran         ###   ########.fr        #
+#    Updated: 2025/04/04 10:30:51 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re
 
 CC			= 	cc
-CFLAGS		= 	#-Wall -Werror -Wextra
+CFLAGS		= 	-Wall -Werror -Wextra
 AR			=	ar -rcs
 NAME		= 	push_swap
 BNAME		=	checker
